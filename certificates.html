@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#10110f">
+  <meta name="description" content="Certificates and achievements earned by Jonvie G. Cantero, BSIT student and aspiring industry-ready IT professional.">
+  <title>Certificates &amp; Achievements | Jonvie G. Cantero</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --ink: #f5f1e8;
+      --muted: #aaa69d;
+      --dim: #77756f;
+      --page: #10110f;
+      --surface: #181916;
+      --surface-raised: #20211d;
+      --line: rgba(245, 241, 232, .12);
+      --gold: #d5ad66;
+      --gold-bright: #eccb88;
+      --serif: Georgia, "Times New Roman", serif;
+      --sans: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    *,
+    *::before,
+    *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      min-width: 320px;
+      margin: 0;
+      background:
+        radial-gradient(ellipse at 83% 0%, rgba(213, 173, 102, .09), transparent 36rem),
+        var(--page);
+      color: var(--ink);
+      font-family: var(--sans);
+      line-height: 1.6;
+    }
+    button, a { font: inherit; }
+    a { color: inherit; text-decoration: none; }
+    button { color: inherit; }
+    button:focus-visible, a:focus-visible {
+      outline: 2px solid var(--gold-bright);
+      outline-offset: 4px;
+    }
+    .shell { width: min(1160px, calc(100% - 56px)); margin-inline: auto; }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 82px;
+      border-bottom: 1px solid var(--line);
+    }
+    .identity { display: flex; align-items: center; gap: 13px; }
+    .monogram {
+      display: grid;
+      width: 38px;
+      aspect-ratio: 1;
+      place-items: center;
+      border: 1px solid rgba(213, 173, 102, .56);
+      border-radius: 50%;
+      color: var(--gold-bright);
+      font-family: var(--serif);
+      font-size: 15px;
+      letter-spacing: -.08em;
+    }
+    .identity-name { font-size: 13px; font-weight: 650; letter-spacing: .015em; }
+    .identity-role { color: var(--muted); font-size: 11px; letter-spacing: .04em; }
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      color: var(--muted);
+      font-size: 12px;
+      transition: color .2s ease;
+    }
+    .back-link:hover { color: var(--gold-bright); }
+
+    .intro {
+      position: relative;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 180px;
+      align-items: end;
+      gap: 32px;
+      padding-block: clamp(64px, 10vw, 124px) 67px;
+      border-bottom: 1px solid var(--line);
+    }
+    .eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 0 0 22px;
+      color: var(--gold);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+    }
+    .eyebrow::before { width: 28px; height: 1px; background: var(--gold); content: ""; }
+    h1 {
+      max-width: 760px;
+      margin: 0;
+      font-family: var(--serif);
+      font-size: clamp(48px, 8vw, 88px);
+      font-weight: 400;
+      letter-spacing: -.065em;
+      line-height: .99;
+    }
+    h1 span { color: var(--gold-bright); font-style: italic; }
+    .intro-copy {
+      max-width: 490px;
+      margin: 24px 0 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.8;
+    }
+    .collection-count {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      padding-bottom: 5px;
+    }
+    .collection-count strong {
+      color: var(--gold-bright);
+      font-family: var(--serif);
+      font-size: clamp(70px, 9vw, 112px);
+      font-weight: 400;
+      letter-spacing: -.08em;
+      line-height: .9;
+    }
+    .collection-count span {
+      margin-top: 15px;
+      color: var(--muted);
+      font-size: 9px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+    }
+
+    .gallery-section { padding-block: 30px 100px; }
+    .gallery-toolbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 27px;
+    }
+    .gallery-label { color: var(--muted); font-size: 12px; }
+    .gallery-label strong { color: var(--ink); font-weight: 600; }
+    .filters { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 7px; }
+    .filter-button {
+      padding: 8px 13px;
+      border: 1px solid transparent;
+      border-radius: 999px;
+      background: transparent;
+      color: var(--muted);
+      cursor: pointer;
+      font-size: 11px;
+      transition: color .2s ease, border-color .2s ease, background .2s ease;
+    }
+    .filter-button:hover { color: var(--ink); }
+    .filter-button[aria-pressed="true"] {
+      border-color: rgba(213, 173, 102, .38);
+      background: rgba(213, 173, 102, .1);
+      color: var(--gold-bright);
+    }
+    .certificate-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+    .certificate-card {
+      min-width: 0;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 5px;
+      background: var(--surface);
+      transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+    }
+    .certificate-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(213, 173, 102, .4);
+      box-shadow: 0 18px 50px rgba(0, 0, 0, .25);
+    }
+    .certificate-card[hidden] { display: none; }
+    .preview-button {
+      position: relative;
+      display: block;
+      width: 100%;
+      padding: 0;
+      overflow: hidden;
+      border: 0;
+      background: #dedbd3;
+      cursor: zoom-in;
+    }
+    .preview-button img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 1.42;
+      object-fit: cover;
+      transition: transform .45s cubic-bezier(.2, .7, .2, 1), filter .3s ease;
+    }
+    .certificate-card:hover .preview-button img { transform: scale(1.035); filter: brightness(.82); }
+    .view-hint {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      color: #fff;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .12em;
+      opacity: 0;
+      text-transform: uppercase;
+      transition: opacity .25s ease;
+    }
+    .certificate-card:hover .view-hint, .preview-button:focus-visible .view-hint { opacity: 1; }
+    .card-body { padding: 19px 19px 17px; }
+    .card-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 11px;
+    }
+    .category {
+      color: var(--gold);
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+    .date { color: var(--dim); font-size: 10px; white-space: nowrap; }
+    .card-title {
+      min-height: 51px;
+      margin: 0;
+      font-family: var(--serif);
+      font-size: 19px;
+      font-weight: 400;
+      letter-spacing: -.025em;
+      line-height: 1.3;
+    }
+    .issuer { margin: 7px 0 0; color: var(--muted); font-size: 11px; }
+    .card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-top: 18px;
+      padding-top: 13px;
+      border-top: 1px solid var(--line);
+    }
+    .credential-type { color: var(--dim); font-size: 10px; }
+    .open-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 0;
+      border: 0;
+      background: transparent;
+      color: var(--gold-bright);
+      cursor: pointer;
+      font-size: 10px;
+      font-weight: 650;
+    }
+    .open-link:hover { color: var(--ink); }
+    .open-link svg { transition: transform .2s ease; }
+    .open-link:hover svg { transform: translate(2px, -2px); }
+
+    .page-footer {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      padding-block: 21px 28px;
+      border-top: 1px solid var(--line);
+      color: var(--dim);
+      font-size: 10px;
+    }
+    .page-footer strong { color: var(--muted); font-weight: 500; }
+
+    .lightbox {
+      width: min(1100px, calc(100% - 32px));
+      max-width: none;
+      max-height: min(92vh, 920px);
+      padding: 0;
+      overflow: hidden;
+      border: 1px solid rgba(245, 241, 232, .16);
+      border-radius: 7px;
+      background: #171815;
+      color: var(--ink);
+      box-shadow: 0 28px 100px rgba(0, 0, 0, .65);
+    }
+    .lightbox::backdrop { background: rgba(7, 8, 7, .85); backdrop-filter: blur(8px); }
+    .lightbox-inner { display: flex; max-height: min(92vh, 920px); flex-direction: column; }
+    .lightbox-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      min-height: 62px;
+      padding: 11px 18px;
+      border-bottom: 1px solid var(--line);
+    }
+    .lightbox-title { margin: 0; font-family: var(--serif); font-size: 17px; font-weight: 400; }
+    .lightbox-actions { display: flex; align-items: center; gap: 10px; }
+    .lightbox-actions a, .icon-button {
+      display: inline-flex;
+      min-width: 34px;
+      min-height: 34px;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      padding: 6px 10px;
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      background: transparent;
+      color: var(--muted);
+      cursor: pointer;
+      font-size: 11px;
+      text-decoration: none;
+      transition: border-color .2s ease, color .2s ease;
+    }
+    .lightbox-actions a:hover, .icon-button:hover { border-color: var(--gold); color: var(--gold-bright); }
+    .lightbox-image-wrap {
+      display: grid;
+      min-height: 0;
+      flex: 1;
+      place-items: center;
+      padding: 18px;
+      overflow: auto;
+      background: #0c0d0b;
+    }
+    .lightbox-image { display: block; max-width: 100%; max-height: calc(92vh - 110px); object-fit: contain; }
+
+    @media (max-width: 850px) {
+      .certificate-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .intro { grid-template-columns: minmax(0, 1fr) 120px; }
+      .collection-count strong { font-size: 80px; }
+      .gallery-toolbar { align-items: flex-start; flex-direction: column; gap: 14px; }
+      .filters { justify-content: flex-start; }
+    }
+    @media (max-width: 560px) {
+      .shell { width: min(100% - 36px, 460px); }
+      .topbar { min-height: 70px; }
+      .back-link { font-size: 0; }
+      .back-link svg { width: 20px; height: 20px; }
+      .intro { grid-template-columns: 1fr; gap: 28px; padding-block: 70px 40px; }
+      h1 { font-size: clamp(48px, 14vw, 70px); }
+      .intro-copy { margin-top: 17px; font-size: 13px; }
+      .collection-count { align-items: flex-start; flex-direction: row; gap: 12px; }
+      .collection-count strong { font-size: 42px; letter-spacing: -.04em; }
+      .collection-count span { margin-top: 10px; }
+      .gallery-section { padding-block: 24px 65px; }
+      .certificate-grid { grid-template-columns: 1fr; gap: 14px; }
+      .preview-button img { aspect-ratio: 1.5; }
+      .card-title { min-height: 0; }
+      .page-footer { flex-direction: column; gap: 7px; }
+      .lightbox-header { align-items: flex-start; padding: 12px; }
+      .lightbox-title { max-width: 48%; font-size: 15px; }
+      .lightbox-actions { gap: 5px; }
+      .lightbox-actions a, .icon-button { min-width: 32px; padding-inline: 7px; }
+      .lightbox-image-wrap { padding: 8px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        scroll-behavior: auto !important;
+        transition-duration: .01ms !important;
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar shell">
+    <a class="identity" href="../index.html" aria-label="Jonvie G. Cantero portfolio home">
+      <span class="monogram" aria-hidden="true">JC</span>
+      <span>
+        <span class="identity-name">Jonvie G. Cantero</span><br>
+        <span class="identity-role">BSIT · Industry-Ready Portfolio</span>
+      </span>
+    </a>
+    <a class="back-link" href="../index.html">
+      <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M19 12H5m0 0 7 7m-7-7 7-7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Back to portfolio
+    </a>
+  </header>
+
+  <main>
+    <section class="intro shell" aria-labelledby="page-title">
+      <div>
+        <p class="eyebrow">Learning · Growth · Recognition</p>
+        <h1 id="page-title">Certificates <span>&amp;</span><br>Achievements</h1>
+        <p class="intro-copy">A growing collection of learning milestones in web development, cybersecurity, cloud computing, and emerging technology.</p>
+      </div>
+      <div class="collection-count" aria-label="5 certificates in this collection">
+        <strong>05</strong>
+        <span>Learning milestones</span>
+      </div>
+    </section>
+
+    <section class="gallery-section shell" aria-label="Certificate gallery">
+      <div class="gallery-toolbar">
+        <p class="gallery-label" aria-live="polite"><strong id="visible-count">05 certificates</strong> <span id="filter-description">in the collection</span></p>
+        <div class="filters" role="group" aria-label="Filter certificates by subject">
+          <button class="filter-button" type="button" data-filter="all" aria-pressed="true">All</button>
+          <button class="filter-button" type="button" data-filter="development" aria-pressed="false">Development</button>
+          <button class="filter-button" type="button" data-filter="cybersecurity" aria-pressed="false">Cybersecurity</button>
+          <button class="filter-button" type="button" data-filter="cloud" aria-pressed="false">Cloud</button>
+          <button class="filter-button" type="button" data-filter="hardware" aria-pressed="false">Hardware</button>
+        </div>
+      </div>
+
+      <div class="certificate-grid" id="certificate-grid">
+        <article class="certificate-card" data-category="development">
+          <button class="preview-button" type="button" data-index="0" aria-label="View Wed Dev 101: System Integration | Connecting Apps via API certificate">
+            <img src="assets/web-dev-api-integration.png" alt="Certificate of participation for Wed Dev 101: System Integration, Connecting Apps via API" loading="lazy" width="1030" height="735">
+            <span class="view-hint" aria-hidden="true">View certificate</span>
+          </button>
+          <div class="card-body">
+            <div class="card-meta"><span class="category">Development</span><time class="date" datetime="2026-08-08">Aug 08, 2026</time></div>
+            <h2 class="card-title">Wed Dev 101: System Integration | Connecting Apps via API</h2>
+            <p class="issuer">UpskillTechPH Training Services</p>
+            <div class="card-footer">
+              <span class="credential-type">Participation · 1 hour</span>
+              <button class="open-link" type="button" data-index="0">View
+                <svg aria-hidden="true" width="13" height="13" viewBox="0 0 16 16" fill="none"><path d="M4 12 12 4M5 4h7v7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <article class="certificate-card" data-category="cybersecurity">
+          <button class="preview-button" type="button" data-index="1" aria-label="View Cyber Awareness: Cyber Threats in 2026 and How to Stay Safe certificate">
+            <img src="assets/cyber-awareness.png" alt="Certificate of participation for Cyber Awareness: Cyber Threats in 2026 and How to Stay Safe" loading="lazy" width="1070" height="760">
+            <span class="view-hint" aria-hidden="true">View certificate</span>
+          </button>
+          <div class="card-body">
+            <div class="card-meta"><span class="category">Cybersecurity</span><time class="date" datetime="2026-08-08">Aug 08, 2026</time></div>
+            <h2 class="card-title">Cyber Awareness: Cyber Threats in 2026 and How to Stay Safe</h2>
+            <p class="issuer">UpskillTechPH Training Services</p>
+            <div class="card-footer">
+              <span class="credential-type">Participation · 1 hour</span>
+              <button class="open-link" type="button" data-index="1">View
+                <svg aria-hidden="true" width="13" height="13" viewBox="0 0 16 16" fill="none"><path d="M4 12 12 4M5 4h7v7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <article class="certificate-card" data-category="cloud">
+          <button class="preview-button" type="button" data-index="2" aria-label="View Cloud 101: Cloud Computing 101 | Understanding the Basics certificate">
+            <img src="assets/cloud-computing-fundamentals.png" alt="Certificate of participation for Cloud 101: Cloud Computing 101, Understanding the Basics" loading="lazy" width="1087" height="770">
+            <span class="view-hint" aria-hidden="true">View certificate</span>
+          </button>
+          <div class="card-body">
+            <div class="card-meta"><span class="category">Cloud</span><time class="date" datetime="2026-08-14">Aug 14, 2026</time></div>
+            <h2 class="card-title">Cloud 101: Understanding the Basics</h2>
+            <p class="issuer">UpskillTechPH Training Services</p>
+            <div class="card-footer">
+              <span class="credential-type">Participation · 2 hours</span>
+              <button class="open-link" type="button" data-index="2">View
+                <svg aria-hidden="true" width="13" height="13" viewBox="0 0 16 16" fill="none"><path d="M4 12 12 4M5 4h7v7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <article class="certificate-card" data-category="cybersecurity">
+          <button class="preview-button" type="button" data-index="3" aria-label="View Cybersecurity Fundamentals certificate">
+            <img src="assets/cybersecurity-fundamentals.png" alt="Certificate of participation for Cybersecurity Fundamentals" loading="lazy" width="1074" height="762">
+            <span class="view-hint" aria-hidden="true">View certificate</span>
+          </button>
+          <div class="card-body">
+            <div class="card-meta"><span class="category">Cybersecurity</span><time class="date" datetime="2026-10-04">Oct 04, 2026</time></div>
+            <h2 class="card-title">Cybersecurity Fundamentals</h2>
+            <p class="issuer">UpskillTechPH Training Services</p>
+            <div class="card-footer">
+              <span class="credential-type">Participation · 2 hours</span>
+              <button class="open-link" type="button" data-index="3">View
+                <svg aria-hidden="true" width="13" height="13" viewBox="0 0 16 16" fill="none"><path d="M4 12 12 4M5 4h7v7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <article class="certificate-card" data-category="hardware">
+          <button class="preview-button" type="button" data-index="4" aria-label="View Arduino 101: Coding Meets Hardware certificate">
+            <img src="assets/arduino-coding-hardware.png" alt="Certificate of participation for Arduino 101: Coding Meets Hardware" loading="lazy" width="1088" height="772">
+            <span class="view-hint" aria-hidden="true">View certificate</span>
+          </button>
+          <div class="card-body">
+            <div class="card-meta"><span class="category">Hardware</span><time class="date" datetime="2026-08-05">Aug 05, 2026</time></div>
+            <h2 class="card-title">Arduino 101: Coding Meets Hardware</h2>
+            <p class="issuer">UpskillTechPH Training Services</p>
+            <div class="card-footer">
+              <span class="credential-type">Participation · 1 hour</span>
+              <button class="open-link" type="button" data-index="4">View
+                <svg aria-hidden="true" width="13" height="13" viewBox="0 0 16 16" fill="none"><path d="M4 12 12 4M5 4h7v7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="page-footer shell">
+    <span><strong>Jonvie G. Cantero</strong> · BSIT Industry-Ready Portfolio</span>
+    <span>Learning is a lifelong achievement.</span>
+  </footer>
+
+  <dialog class="lightbox" id="certificate-dialog" aria-label="Certificate viewer">
+    <div class="lightbox-inner">
+      <div class="lightbox-header">
+        <h2 class="lightbox-title" id="dialog-title"></h2>
+        <div class="lightbox-actions">
+          <button class="icon-button" type="button" id="previous-certificate" aria-label="Previous certificate">
+            <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M19 12H5m0 0 7 7m-7-7 7-7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <button class="icon-button" type="button" id="next-certificate" aria-label="Next certificate">
+            <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12h14m0 0-7-7m7 7-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <a id="download-certificate" href="#" download>
+            <svg aria-hidden="true" width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M8 2v8m0 0 3-3m-3 3L5 7m-2 5v2h10v-2" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Download
+          </a>
+          <button class="icon-button" type="button" id="close-dialog" aria-label="Close certificate viewer">
+            <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="m6 6 12 12M18 6 6 18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </button>
+        </div>
+      </div>
+      <div class="lightbox-image-wrap">
+        <img class="lightbox-image" id="dialog-image" src="" alt="">
+      </div>
+    </div>
+  </dialog>
+
+  <script>
+    (() => {
+      const cards = [...document.querySelectorAll(".certificate-card")];
+      const filterButtons = [...document.querySelectorAll(".filter-button")];
+      const dialog = document.querySelector("#certificate-dialog");
+      const dialogTitle = document.querySelector("#dialog-title");
+      const dialogImage = document.querySelector("#dialog-image");
+      const downloadLink = document.querySelector("#download-certificate");
+      const visibleCount = document.querySelector("#visible-count");
+      const filterDescription = document.querySelector("#filter-description");
+      let activeCertificate = 0;
+
+      const certificateAt = (index) => {
+        const card = cards[index];
+        return {
+          title: card.querySelector(".card-title").textContent.trim(),
+          image: card.querySelector("img")
+        };
+      };
+
+      const showCertificate = (index) => {
+        activeCertificate = (index + cards.length) % cards.length;
+        const certificate = certificateAt(activeCertificate);
+        dialogTitle.textContent = certificate.title;
+        dialogImage.src = certificate.image.src;
+        dialogImage.alt = certificate.image.alt;
+        downloadLink.href = certificate.image.getAttribute("src");
+        downloadLink.download = certificate.image.getAttribute("src").split("/").pop();
+      };
+
+      document.querySelectorAll("[data-index]").forEach((button) => {
+        button.addEventListener("click", () => {
+          showCertificate(Number(button.dataset.index));
+          dialog.showModal();
+        });
+      });
+
+      document.querySelector("#close-dialog").addEventListener("click", () => dialog.close());
+      document.querySelector("#previous-certificate").addEventListener("click", () => showCertificate(activeCertificate - 1));
+      document.querySelector("#next-certificate").addEventListener("click", () => showCertificate(activeCertificate + 1));
+      dialog.addEventListener("click", (event) => {
+        if (event.target === dialog) dialog.close();
+      });
+      dialog.addEventListener("keydown", (event) => {
+        if (event.key === "ArrowLeft") showCertificate(activeCertificate - 1);
+        if (event.key === "ArrowRight") showCertificate(activeCertificate + 1);
+      });
+
+      filterButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          const filter = button.dataset.filter;
+          let shown = 0;
+          cards.forEach((card) => {
+            const matches = filter === "all" || card.dataset.category === filter;
+            card.hidden = !matches;
+            if (matches) shown += 1;
+          });
+          filterButtons.forEach((item) => item.setAttribute("aria-pressed", String(item === button)));
+          visibleCount.textContent = `${String(shown).padStart(2, "0")} ${shown === 1 ? "certificate" : "certificates"}`;
+          filterDescription.textContent = filter === "all" ? "in the collection" : `in ${button.textContent.trim()}`;
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
