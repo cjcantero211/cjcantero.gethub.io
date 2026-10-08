@@ -1,942 +1,632 @@
 <!DOCTYPE html>
-<html lang="en" class="dark">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>BSIT Capstone Portfolio | IT Professional Showcase</title>
-
-  <!-- Tailwind CSS -->
-  <script src="https://cdn.tailwindcss.com"></script>
-
-  <!-- Font Awesome Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-
-  <!-- Google Fonts (Inter + JetBrains Mono) -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
-
-  <script>
-    tailwind.config = {
-      darkMode: 'class',
-      theme: {
-        extend: {
-          colors: {
-            brand: {
-              50: '#f0f9ff',
-              500: '#0ea5e9',
-              600: '#0284c7',
-              900: '#0c4a6e',
-            },
-            accent: {
-              cyan: '#06b6d4',
-              indigo: '#6366f1',
-              emerald: '#10b981'
-            }
-          },
-          fontFamily: {
-            sans: ['Inter', 'sans-serif'],
-            mono: ['JetBrains Mono', 'monospace'],
-          }
-        }
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="BSIT Capstone Portfolio for Jonvie G. Cantero" />
+    <title>Jonvie G. Cantero | BSIT Portfolio</title>
+    <style>
+      :root {
+        --bg: #020817;
+        --bg-alt: #0b1120;
+        --panel: rgba(15, 23, 42, 0.82);
+        --panel-strong: #0f172a;
+        --panel-soft: #111827;
+        --text: #e2e8f0;
+        --muted: #94a3b8;
+        --line: rgba(148, 163, 184, 0.18);
+        --cyan: #22d3ee;
+        --cyan-strong: #06b6d4;
+        --indigo: #818cf8;
+        --emerald: #34d399;
+        --amber: #fbbf24;
+        --danger: #f87171;
+        --shadow: 0 20px 50px rgba(2, 6, 23, 0.45);
+        --radius: 22px;
+        --container: 1180px;
       }
-    }
-  </script>
 
-  <style>
-    html {
-      scroll-behavior: smooth;
-    }
-    
-    /* Dark glassmorphism card */
-    .glass-card {
-      background: rgba(15, 23, 42, 0.75);
-      backdrop-filter: blur(12px);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-    }
-    
-    /* Light mode styling overrides */
-    html:not(.dark) body {
-      background-color: #f8fafc;
-      color: #0f172a;
-    }
-    html:not(.dark) .glass-card {
-      background: rgba(255, 255, 255, 0.85);
-      border: 1px solid rgba(0, 0, 0, 0.08);
-      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
-    }
-    html:not(.dark) .nav-header {
-      background-color: rgba(255, 255, 255, 0.85);
-      border-color: rgba(226, 232, 240, 0.8);
-    }
-    html:not(.dark) .section-bg-alt {
-      background-color: rgba(241, 245, 249, 0.8);
-    }
+      html { scroll-behavior: smooth; }
+      html.light {
+        --bg: #f8fafc;
+        --bg-alt: #eef6ff;
+        --panel: rgba(255, 255, 255, 0.9);
+        --panel-strong: #ffffff;
+        --panel-soft: #f1f5f9;
+        --text: #0f172a;
+        --muted: #475569;
+        --line: rgba(15, 23, 42, 0.12);
+        --shadow: 0 20px 45px rgba(15, 23, 42, 0.08);
+      }
 
-    .glow-effect:hover {
-      box-shadow: 0 0 25px -5px rgba(14, 165, 233, 0.35);
-    }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+        background:
+          radial-gradient(circle at 15% 10%, rgba(34, 211, 238, 0.16), transparent 28%),
+          radial-gradient(circle at 80% 15%, rgba(129, 140, 248, 0.14), transparent 24%),
+          var(--bg);
+        color: var(--text);
+        line-height: 1.6;
+      }
+      a { color: inherit; text-decoration: none; }
+      img { max-width: 100%; display: block; }
+      .container { width: min(var(--container), calc(100% - 32px)); margin: 0 auto; }
+      .section { padding: 96px 0; }
+      .eyebrow {
+        display: inline-flex; align-items: center; gap: 10px;
+        font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--cyan);
+        border: 1px solid rgba(34, 211, 238, 0.35); background: rgba(34, 211, 238, 0.08);
+        padding: 9px 14px; border-radius: 999px; font-weight: 700;
+      }
+      .eyebrow::before {
+        content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--cyan);
+        box-shadow: 0 0 14px rgba(34, 211, 238, 0.9);
+      }
+      h1,h2,h3,h4,h5,h6 { margin: 0 0 18px; line-height: 1.08; letter-spacing: -0.04em; }
+      p { margin: 0; }
 
-    /* Terminal cursor blink animation */
-    .term-cursor {
-      display: inline-block;
-      width: 8px;
-      height: 18px;
-      background-color: #0ea5e9;
-      animation: blink 1s infinite;
-      vertical-align: middle;
-      margin-left: 2px;
-    }
-    @keyframes blink {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0; }
-    }
-  </style>
-</head>
-<body class="bg-slate-950 text-slate-100 font-sans transition-colors duration-300">
+      .header {
+        position: sticky; top: 0; z-index: 50; backdrop-filter: blur(18px);
+        background: rgba(2, 8, 23, 0.7); border-bottom: 1px solid var(--line);
+      }
+      html.light .header { background: rgba(248, 250, 252, 0.75); }
+      .nav { height: 78px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+      .brand {
+        display: inline-flex; align-items: center; gap: 10px; font-size: 1.05rem; font-weight: 800;
+        letter-spacing: -0.03em; color: var(--cyan); font-family: "Courier New", monospace;
+      }
+      .brand-mark {
+        width: 30px; height: 30px; display: inline-flex; align-items: center; justify-content: center;
+        border-radius: 10px; background: rgba(34, 211, 238, 0.09); color: var(--cyan);
+        border: 1px solid rgba(34, 211, 238, 0.2);
+      }
+      .nav-links {
+        display: flex; align-items: center; gap: 8px; padding: 6px; border-radius: 999px;
+        border: 1px solid var(--line); background: rgba(15, 23, 42, 0.45);
+      }
+      html.light .nav-links { background: rgba(255, 255, 255, 0.72); }
+      .nav-links a {
+        padding: 10px 14px; border-radius: 999px; color: var(--muted); font-size: 12px; font-weight: 600;
+        letter-spacing: 0.02em; transition: 0.2s ease;
+      }
+      .nav-links a:hover, .nav-links a:focus-visible { background: rgba(148, 163, 184, 0.08); color: var(--text); }
+      .nav-actions { display: flex; align-items: center; gap: 12px; }
+      .theme-toggle, .primary-btn, .secondary-btn, .small-btn {
+        border: 1px solid var(--line); border-radius: 14px; cursor: pointer;
+        transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+      }
+      .theme-toggle {
+        width: 42px; height: 42px; display: inline-flex; align-items: center; justify-content: center;
+        background: rgba(15, 23, 42, 0.65); color: var(--text);
+      }
+      html.light .theme-toggle { background: rgba(255, 255, 255, 0.7); }
+      .primary-btn, .secondary-btn, .small-btn {
+        display: inline-flex; align-items: center; justify-content: center; gap: 10px; font-weight: 700; letter-spacing: 0.02em;
+      }
+      .primary-btn {
+        background: linear-gradient(135deg, var(--cyan), var(--indigo)); color: #03131b; border: none;
+        padding: 14px 22px; box-shadow: 0 18px 35px rgba(34, 211, 238, 0.22);
+      }
+      .secondary-btn {
+        background: rgba(15, 23, 42, 0.7); color: var(--text); padding: 14px 20px;
+      }
+      .small-btn {
+        background: rgba(34, 211, 238, 0.06); border-color: rgba(34, 211, 238, 0.22); color: var(--cyan);
+        padding: 11px 16px; font-size: 13px;
+      }
+      .theme-toggle:hover, .primary-btn:hover, .secondary-btn:hover, .small-btn:hover { transform: translateY(-1px); }
 
-  <!-- Navigation Header -->
-  <header class="nav-header sticky top-0 z-40 w-full border-b border-slate-800/80 bg-slate-950/80 backdrop-blur-md transition-colors duration-300">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
-      <a href="#" class="flex items-center gap-2 font-mono text-lg font-bold tracking-tight text-cyan-400 shrink-0">
-        <i class="fa-solid fa-terminal text-cyan-500"></i>
-        <span>&lt;Cantero.Portfolio /&gt;</span>
-      </a>
+      .hero { padding: 88px 0 56px; }
+      .hero-grid { display: grid; grid-template-columns: 1.25fr 0.75fr; gap: 52px; align-items: center; }
+      .hero-copy h1 { font-size: clamp(2.6rem, 4vw, 5rem); margin: 24px 0 18px; }
+      .gradient-text {
+        background: linear-gradient(135deg, var(--cyan), #a5f3fc 40%, var(--indigo));
+        -webkit-background-clip: text; background-clip: text; color: transparent;
+      }
+      .hero-copy .subtitle { font-size: clamp(1.1rem, 1.6vw, 1.55rem); font-weight: 600; color: var(--muted); margin-bottom: 18px; }
+      .hero-copy .description { max-width: 640px; font-size: 1.05rem; color: var(--muted); }
+      .cta-row { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 30px; }
+      .hero-stats {
+        display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; max-width: 540px; margin-top: 28px;
+        padding-top: 22px; border-top: 1px solid var(--line);
+      }
+      .stat strong { display: block; font-size: clamp(1.6rem, 2.2vw, 2.2rem); line-height: 1.1; font-weight: 800; }
+      .stat span { font-size: 12px; color: var(--muted); letter-spacing: 0.04em; text-transform: uppercase; }
 
-      <div class="flex items-center justify-end gap-3 flex-1">
-        <!-- Desktop Navigation Links -->
-        <nav class="hidden md:flex items-center gap-2 rounded-full border border-slate-800/80 bg-slate-900/70 p-1.5 shadow-lg shadow-slate-950/20">
-          <a href="#about" class="px-3 py-2 text-xs font-medium rounded-full hover:bg-slate-800 hover:text-cyan-400 transition-all">About</a>
-          <a href="#about-me" class="px-3 py-2 text-xs font-medium rounded-full hover:bg-slate-800 hover:text-cyan-400 transition-all">Profile</a>
-          <a href="#competencies" class="px-3 py-2 text-xs font-medium rounded-full hover:bg-slate-800 hover:text-cyan-400 transition-all">Skills</a>
-          <a href="#inventory" class="px-3 py-2 text-xs font-medium rounded-full hover:bg-slate-800 hover:text-cyan-400 transition-all">Inventory</a>
-          <a href="#projects" class="px-3 py-2 text-xs font-medium rounded-full hover:bg-slate-800 hover:text-cyan-400 transition-all">Projects</a>
-          <a href="#contact" class="px-3 py-2 text-xs font-medium rounded-full hover:bg-slate-800 hover:text-cyan-400 transition-all">Contact</a>
+      .profile-panel {
+        background: linear-gradient(180deg, rgba(15, 23, 42, 0.75), rgba(15, 23, 42, 0.60));
+        border: 1px solid var(--line); border-radius: var(--radius); padding: 26px; box-shadow: var(--shadow);
+      }
+      html.light .profile-panel { background: linear-gradient(180deg, rgba(255,255,255,0.85), rgba(255,255,255,0.76)); }
+      .profile-top { display: flex; align-items: center; gap: 18px; padding-bottom: 20px; border-bottom: 1px solid var(--line); }
+      .avatar { width: 78px; height: 78px; border-radius: 22px; overflow: hidden; border: 1px solid rgba(148, 163, 184, 0.25); box-shadow: 0 15px 35px rgba(2, 6, 23, 0.35); }
+      .avatar img { width: 100%; height: 100%; object-fit: cover; }
+      .profile-name { font-size: 1.05rem; font-weight: 800; margin-bottom: 4px; }
+      .profile-role { color: var(--cyan); font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 700; }
+      .status { display: inline-flex; align-items: center; gap: 8px; margin-top: 10px; color: var(--emerald); font-weight: 700; font-size: 12px; }
+      .status-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--emerald); box-shadow: 0 0 12px rgba(52, 211, 153, 0.9); }
+      .profile-info { padding-top: 22px; }
+      .info-row { display: flex; justify-content: space-between; gap: 10px; padding: 12px 0; border-bottom: 1px solid var(--line); font-size: 0.86rem; }
+      .info-row:last-child { border-bottom: none; }
+      .info-row span { color: var(--muted); }
+      .info-row strong { color: var(--text); text-align: right; }
+      .terminal-card { margin-top: 24px; background: rgba(15, 23, 42, 0.88); border: 1px solid var(--line); border-radius: 16px; overflow: hidden; }
+      html.light .terminal-card { background: rgba(15, 23, 42, 0.95); }
+      .terminal-header { display: flex; align-items: center; justify-content: space-between; padding: 12px 16px; border-bottom: 1px solid rgba(148, 163, 184, 0.15); background: rgba(15, 23, 42, 0.75); }
+      .terminal-dots { display: flex; align-items: center; gap: 8px; }
+      .terminal-dots span { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+      .terminal-dots span:nth-child(1) { background: #ef4444; }
+      .terminal-dots span:nth-child(2) { background: #fbbf24; }
+      .terminal-dots span:nth-child(3) { background: #22c55e; }
+      .terminal-body { padding: 18px 16px 14px; color: var(--text); font-family: "Courier New", monospace; font-size: 12px; line-height: 1.8; }
+      .terminal-body .muted { color: #94a3b8; }
+      .terminal-body .green { color: #34d399; }
+      .terminal-body .cyan { color: var(--cyan); }
+
+      .section-head { margin-bottom: 36px; text-align: center; }
+      .section-head h2 { font-size: clamp(2rem, 3vw, 3rem); margin-top: 10px; }
+      .section-head p { max-width: 760px; margin: 14px auto 0; color: var(--muted); }
+
+      .about-grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 30px; align-items: center; background: rgba(15,23,42,0.52); border: 1px solid var(--line); border-radius: calc(var(--radius) + 4px); padding: clamp(20px, 2vw, 38px); }
+      html.light .about-grid { background: rgba(255,255,255,0.75); }
+      .about-grid h3 { font-size: clamp(2rem, 2.8vw, 3rem); }
+      .about-grid p { color: var(--muted); font-size: 1.02rem; margin-bottom: 14px; }
+      .info-box { background: rgba(15, 23, 42, 0.52); border: 1px solid rgba(34, 211, 238, 0.2); border-radius: 18px; padding: 20px; }
+      html.light .info-box { background: rgba(9,18,36,0.02); }
+      .info-box h4 { margin-bottom: 16px; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--cyan); }
+      .check-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; }
+      .check-list li { display: flex; align-items: center; gap: 10px; color: var(--text); }
+      .check-list li::before { content: "✓"; color: var(--cyan); font-weight: 900; }
+      .list-panel { margin-top: 18px; background: rgba(15,23,42,0.72); border: 1px solid var(--line); border-radius: 18px; padding: 18px; }
+      html.light .list-panel { background: rgba(255,255,255,0.65); }
+      .list-panel h4 { color: var(--emerald); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 10px; }
+      .list-panel p { color: var(--muted); }
+
+      .portfolio-outline { background: linear-gradient(180deg, rgba(15, 23, 42, 0.64), rgba(15, 23, 42, 0.48)); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+      html.light .portfolio-outline { background: linear-gradient(180deg, rgba(255,255,255,0.72), rgba(241,245,249,0.7)); }
+      .outline-card { background: rgba(2, 8, 23, 0.72); border: 1px solid var(--line); border-radius: 28px; padding: clamp(24px, 3vw, 42px); box-shadow: var(--shadow); }
+      html.light .outline-card { background: rgba(255,255,255,0.8); }
+      .outline-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 18px; }
+      .outline-list li { display: flex; align-items: center; gap: 18px; font-size: clamp(1.5rem, 2vw, 2.4rem); font-weight: 800; letter-spacing: -0.04em; color: var(--text); }
+      .outline-list li::before { content: ""; display: inline-block; width: 12px; height: 12px; border-radius: 50%; background: var(--text); box-shadow: 0 0 0 5px rgba(148, 163, 184, 0.15); }
+
+      .grid-3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+      .card { background: rgba(15, 23, 42, 0.58); border: 1px solid var(--line); border-radius: 20px; padding: 24px; box-shadow: var(--shadow); }
+      html.light .card { background: rgba(255,255,255,0.8); }
+      .icon-box { width: 52px; height: 52px; display: flex; align-items: center; justify-content: center; border-radius: 16px; margin-bottom: 18px; font-size: 1.3rem; }
+      .icon-cyan { background: rgba(34, 211, 238, 0.08); color: var(--cyan); }
+      .icon-indigo { background: rgba(129, 140, 248, 0.08); color: var(--indigo); }
+      .icon-emerald { background: rgba(52, 211, 153, 0.08); color: var(--emerald); }
+      .icon-red { background: rgba(248, 113, 113, 0.08); color: var(--danger); }
+      .icon-amber { background: rgba(251, 191, 36, 0.08); color: var(--amber); }
+      .card h3 { font-size: 1.4rem; margin-bottom: 10px; }
+      .meta { display: inline-block; margin-bottom: 12px; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+      .card p { color: var(--muted); margin-bottom: 18px; }
+      .tag-list { display: flex; flex-wrap: wrap; gap: 8px; padding-top: 12px; border-top: 1px solid var(--line); }
+      .tag { border: 1px solid var(--line); border-radius: 10px; padding: 7px 10px; font-size: 11px; color: var(--text); background: rgba(15, 23, 42, 0.45); font-family: "Courier New", monospace; }
+
+      .project-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+      .project-card { background: rgba(15, 23, 42, 0.58); border: 1px solid var(--line); border-radius: 22px; overflow: hidden; box-shadow: var(--shadow); }
+      html.light .project-card { background: rgba(255,255,255,0.78); }
+      .project-card .content { padding: 24px; }
+      .badge { display: inline-flex; align-items: center; padding: 8px 10px; border-radius: 999px; border: 1px solid var(--line); margin-bottom: 16px; font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 700; }
+      .badge.cyan { background: rgba(34, 211, 238, 0.08); color: var(--cyan); }
+      .badge.emerald { background: rgba(52, 211, 153, 0.08); color: var(--emerald); }
+      .badge.indigo { background: rgba(129, 140, 248, 0.08); color: var(--indigo); }
+      .project-card h3 { font-size: 1.45rem; margin-bottom: 12px; }
+      .project-card p { color: var(--muted); margin-bottom: 18px; }
+      .project-list { list-style: none; padding: 0; margin: 0 0 22px; display: grid; gap: 8px; color: var(--text); font-size: 0.88rem; }
+      .project-list li::before { content: "✓"; color: var(--cyan); margin-right: 8px; }
+      .project-footer { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-top: 16px; border-top: 1px solid var(--line); }
+
+      .case-study { background: #f8fafc; color: #0f172a; border-top: 1px solid rgba(15,23,42,0.08); border-bottom: 1px solid rgba(15,23,42,0.08); }
+      .case-box { background: #fff; border: 1px solid rgba(15, 23, 42, 0.08); border-radius: 28px; padding: clamp(22px, 4vw, 48px); box-shadow: 0 18px 38px rgba(15, 23, 42, 0.08); }
+      .case-box h2 { font-size: clamp(2.3rem, 4vw, 4.6rem); margin-bottom: 20px; }
+      .case-box .lead { font-size: clamp(1.2rem, 2vw, 2.1rem); margin-bottom: 18px; }
+      .case-box ol { margin: 0; padding-left: 1.3em; font-size: clamp(1.1rem, 2vw, 2rem); display: grid; gap: 12px; }
+
+      .contact-wrap { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 30px; align-items: start; }
+      .contact-links { display: grid; gap: 16px; }
+      .contact-item { display: flex; align-items: center; gap: 16px; padding: 16px 18px; border-radius: 18px; border: 1px solid var(--line); background: rgba(15,23,42,0.52); }
+      html.light .contact-item { background: rgba(255,255,255,0.72); }
+      .contact-icon { flex-shrink: 0; width: 46px; height: 46px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; }
+      .ci-mail { background: rgba(34,211,238,0.08); color: var(--cyan); }
+      .ci-linkedin { background: rgba(129,140,248,0.08); color: var(--indigo); }
+      .ci-github { background: rgba(52,211,153,0.08); color: var(--emerald); }
+      .contact-meta { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em; }
+      .contact-value { font-size: 0.98rem; font-weight: 700; }
+      .form-card { background: rgba(15,23,42,0.58); border: 1px solid var(--line); border-radius: 22px; padding: 24px; }
+      html.light .form-card { background: rgba(255,255,255,0.76); }
+      .form-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+      .field { display: grid; gap: 8px; }
+      .field.full { grid-column: 1 / -1; }
+      label { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
+      input, textarea { width: 100%; border: 1px solid var(--line); background: rgba(15,23,42,0.72); color: var(--text); border-radius: 14px; padding: 14px 15px; font: inherit; resize: vertical; }
+      html.light input, html.light textarea { background: rgba(255,255,255,0.75); }
+      input:focus, textarea:focus { outline: 2px solid rgba(34, 211, 238, 0.24); border-color: rgba(34,211,238,0.5); }
+      .submit-btn { margin-top: 18px; width: 100%; padding: 16px 22px; font: inherit; font-weight: 800; color: #03131b; border: none; border-radius: 14px; background: linear-gradient(135deg, var(--cyan), var(--indigo)); box-shadow: 0 18px 30px rgba(34,211,238,0.22); cursor: pointer; }
+      footer { padding: 28px 0 34px; border-top: 1px solid var(--line); color: var(--muted); }
+      .footer-row { display: flex; align-items: center; justify-content: space-between; gap: 18px; flex-wrap: wrap; }
+      .mono { font-family: "Courier New", monospace; }
+
+      @media (max-width: 980px) {
+        .hero-grid, .about-grid, .contact-wrap { grid-template-columns: 1fr; }
+        .project-grid, .grid-3 { grid-template-columns: 1fr 1fr; }
+        .nav-links { display: none; }
+      }
+
+      @media (max-width: 640px) {
+        .nav { height: auto; padding: 16px 0; flex-wrap: wrap; }
+        .nav-actions { width: 100%; justify-content: flex-end; }
+        .hero { padding-top: 60px; }
+        .hero-stats, .project-grid, .grid-3, .form-grid { grid-template-columns: 1fr; }
+        .cta-row { flex-direction: column; align-items: stretch; }
+        .primary-btn, .secondary-btn, .small-btn { width: 100%; }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="header">
+      <div class="container nav">
+        <a href="#top" class="brand" aria-label="Home">
+          <span class="brand-mark">&lt;/&gt;</span>
+          <span>Cantero.Portfolio</span>
+        </a>
+        <nav class="nav-links" aria-label="Main navigation">
+          <a href="#about">About</a>
+          <a href="#profile">Profile</a>
+          <a href="#competencies">Skills</a>
+          <a href="#inventory">Inventory</a>
+          <a href="#projects">Projects</a>
+          <a href="portfolio/certificates.html">Certificates</a>
+          <a href="#contact">Contact</a>
         </nav>
-
-        <div class="flex items-center gap-3">
-          <!-- Theme Toggle Button -->
-          <button id="themeToggleBtn" onclick="toggleTheme()" class="p-2.5 rounded-xl bg-slate-900 border border-slate-800 text-slate-300 hover:text-cyan-400 transition-all dark:bg-slate-900 dark:border-slate-800" title="Toggle Light/Dark Theme">
-            <i id="themeIcon" class="fa-solid fa-moon"></i>
-          </button>
-
-          <a href="#contact" class="hidden sm:inline-flex items-center gap-2 px-4 py-2 text-xs font-semibold uppercase tracking-wider text-white bg-gradient-to-r from-cyan-500 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 rounded-xl shadow-lg shadow-cyan-500/20 transition-all">
-            <i class="fa-solid fa-paper-plane"></i> Get in Touch
-          </a>
+        <div class="nav-actions">
+          <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle theme"><span id="themeIcon">☾</span></button>
+          <a class="primary-btn" href="portfolio/certificates.html">Certificates &amp; Achievements</a>
         </div>
       </div>
-    </div>
-  </header>
+    </header>
 
-  <!-- Hero Section -->
-  <section id="about" class="relative pt-20 pb-16 md:pt-32 md:pb-24 overflow-hidden">
-    <!-- Ambient ambient glowing light -->
-    <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none"></div>
-    <div class="absolute top-1/3 right-10 w-72 h-72 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none"></div>
-
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-      <div class="grid lg:grid-cols-12 gap-12 items-center">
-        <div class="lg:col-span-7 text-left space-y-6">
-          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-cyan-950/60 border border-cyan-800/50 text-cyan-400 text-xs font-mono">
-            <span class="w-2 h-2 rounded-full bg-cyan-400 animate-ping"></span>
-            BSIT Graduation Capstone Portfolio
-          </div>
-          
-          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight">
-            Hi, I'm <span class="bg-gradient-to-r from-cyan-400 via-sky-300 to-indigo-400 bg-clip-text text-transparent">Jonvie G. Cantero</span>
-          </h1>
-
-          <p class="text-lg sm:text-xl font-medium opacity-90">
-            Graduating BSIT Student &nbsp;|&nbsp; Software & Data Analytics Specialist
-          </p>
-
-          <p class="opacity-75 text-base max-w-2xl leading-relaxed">
-            Demonstrating applied IT competencies across full-stack software development, relational SQL databases, data analytics, cybersecurity threat resilience, and cloud deployment. Passionate about engineering efficient software systems to address modern operational challenges.
-          </p>
-
-          <div class="flex flex-wrap items-center gap-4 pt-2">
-            <button onclick="downloadResumeModal()" class="px-6 py-3 text-sm font-bold text-slate-900 bg-cyan-400 hover:bg-cyan-300 rounded-xl shadow-lg shadow-cyan-400/20 transition-all flex items-center gap-2 cursor-pointer">
-              <i class="fa-solid fa-file-arrow-down text-base"></i> Download Resume
-            </button>
-            <a href="https://github.com" target="_blank" class="px-5 py-3 text-sm font-semibold bg-slate-900/80 border border-slate-800 hover:border-slate-700 hover:text-cyan-400 rounded-xl transition-all flex items-center gap-2">
-              <i class="fa-brands fa-github text-lg"></i> GitHub
-            </a>
-            <a href="https://linkedin.com" target="_blank" class="px-5 py-3 text-sm font-semibold bg-slate-900/80 border border-slate-800 hover:border-slate-700 hover:text-cyan-400 rounded-xl transition-all flex items-center gap-2">
-              <i class="fa-brands fa-linkedin text-lg text-blue-400"></i> LinkedIn
-            </a>
-          </div>
-
-          <!-- Quick Stats Badge -->
-          <div class="pt-6 grid grid-cols-3 gap-4 border-t border-slate-800/80 max-w-lg">
-            <div>
-              <p class="text-2xl font-bold font-mono text-cyan-400">15 / 15</p>
-              <p class="text-xs opacity-70">Capstone Objectives</p>
+    <main id="top">
+      <section class="hero">
+        <div class="container hero-grid">
+          <div class="hero-copy">
+            <span class="eyebrow">BSIT Graduation Capstone Portfolio</span>
+            <h1>Hi, I’m <span class="gradient-text">Jonvie G. Cantero</span></h1>
+            <p class="subtitle">Graduating BSIT Student | Software &amp; Data Analytics Specialist</p>
+            <p class="description">
+              Demonstrating applied IT competencies across full-stack software development, SQL database engineering,
+              analytics, cybersecurity resilience, and cloud-based delivery. I build efficient digital systems that solve real problems and support data-driven decisions.
+            </p>
+            <div class="cta-row">
+              <button class="primary-btn" type="button">Download Resume</button>
+              <a class="secondary-btn" href="portfolio/certificates.html">Certificates &amp; Achievements</a>
+              <a class="secondary-btn" href="#projects">View Projects</a>
             </div>
-            <div>
-              <p class="text-2xl font-bold font-mono text-indigo-400">3+</p>
-              <p class="text-xs opacity-70">Systems Built</p>
-            </div>
-            <div>
-              <p class="text-2xl font-bold font-mono text-emerald-400">50+</p>
-              <p class="text-xs opacity-70">Data Records Analyzed</p>
+            <div class="hero-stats" aria-label="Key portfolio stats">
+              <div class="stat"><strong>15/15</strong><span>Capstone objectives</span></div>
+              <div class="stat"><strong>3+</strong><span>Systems built</span></div>
+              <div class="stat"><strong>50+</strong><span>Records analyzed</span></div>
             </div>
           </div>
-        </div>
 
-        <!-- Hero Profile Card -->
-        <div class="lg:col-span-5 flex justify-center">
-          <div class="w-full max-w-md glass-card rounded-2xl p-6 relative glow-effect transition-all">
-            <div class="flex items-center gap-4 pb-6 border-b border-slate-800/60">
-              <div class="w-16 h-16 rounded-2xl overflow-hidden border border-slate-700 shadow-md bg-slate-800">
-                <img
-                  src="file:///C:/Users/jonvi/Downloads/photoshit.jpg"
-                  alt="Jonvie G. Cantero"
-                  class="w-full h-full object-cover"
-                />
+          <aside class="profile-panel" id="profile">
+            <div class="profile-top">
+              <div class="avatar">
+                <img src="file:///C:/Users/jonvi/AppData/Roaming/Code/agentSessionData/07d29f95-3d56-4cb7-8c1f-27a48b2cecb2/attachments/c5aa8c75-c9e2-4e76-8332-ebd8a4bf288a/Pasted%20Image.png" alt="Jonvie G. Cantero portrait" />
               </div>
               <div>
-                <h3 class="font-bold text-lg">Jonvie G. Cantero</h3>
-                <p class="text-xs text-cyan-400 font-mono">BSIT Candidate (Class of 2026)</p>
-                <div class="flex items-center gap-1.5 text-xs text-emerald-400 mt-1">
-                  <span class="w-2 h-2 rounded-full bg-emerald-500"></span> Available for Tech Roles
-                </div>
+                <div class="profile-name">Jonvie G. Cantero</div>
+                <div class="profile-role">BSIT Candidate</div>
+                <div class="status"><span class="status-dot"></span> Available for tech roles</div>
               </div>
             </div>
-
-            <div class="py-4 space-y-3 font-mono text-xs">
-              <div class="flex justify-between py-1 border-b border-slate-800/40">
-                <span class="opacity-60">Degree Program:</span>
-                <span class="font-semibold">BS Information Tech</span>
+            <div class="profile-info">
+              <div class="info-row"><span>Degree Program</span><strong>BS Information Tech</strong></div>
+              <div class="info-row"><span>Core Focus</span><strong>Full Stack &amp; Analytics</strong></div>
+              <div class="info-row"><span>Version Control</span><strong>Git / GitHub</strong></div>
+              <div class="info-row"><span>Deployment</span><strong>Vercel / GitHub Pages</strong></div>
+            </div>
+            <div class="terminal-card" aria-label="Portfolio status terminal">
+              <div class="terminal-header">
+                <div class="terminal-dots"><span></span><span></span><span></span></div>
+                <span class="mono" style="opacity:.7; font-size:11px;">bash</span>
               </div>
-              <div class="flex justify-between py-1 border-b border-slate-800/40">
-                <span class="opacity-60">Core Focus:</span>
-                <span class="text-cyan-400">Full Stack & Analytics</span>
-              </div>
-              <div class="flex justify-between py-1 border-b border-slate-800/40">
-                <span class="opacity-60">Version Control:</span>
-                <span class="text-indigo-400">Git / GitHub CI/CD</span>
-              </div>
-              <div class="flex justify-between py-1">
-                <span class="opacity-60">Deployment Target:</span>
-                <span class="text-emerald-400">Vercel / GitHub Pages</span>
+              <div class="terminal-body">
+                <div class="muted">BSIT Interactive Shell v2026.</div>
+                <div><span class="cyan">&gt; jonvie.getProfileSummary()</span></div>
+                <div class="green">✓ Student Status: Graduating BSIT Candidate | All 15 objectives complete</div>
               </div>
             </div>
-
-            <div class="mt-4 p-3.5 rounded-xl bg-slate-900/80 border border-slate-800 font-mono text-xs">
-              <p class="text-slate-500 mb-1">// System Status</p>
-              <p class="text-cyan-400">&gt; Portfolio compiled successfully.</p>
-              <p class="text-emerald-400">&gt; All 15 BSIT competencies verified.</p>
-            </div>
-          </div>
+          </aside>
         </div>
-      </div>
-    </div>
-  </section>
+      </section>
 
-  <!-- About Me Section -->
-  <section id="about-me" class="py-20 border-b border-slate-800/60">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="glass-card rounded-3xl p-8 sm:p-10 lg:p-12">
-        <div class="flex items-center gap-3 mb-6">
-          <span class="w-3 h-3 rounded-full bg-cyan-400"></span>
-          <h2 class="text-xs font-mono font-semibold uppercase tracking-wider text-cyan-400">About Me</h2>
-        </div>
-
-        <div class="grid lg:grid-cols-[1.2fr_0.8fr] gap-10 items-center">
-          <div>
-            <h3 class="text-3xl sm:text-4xl font-extrabold tracking-tight mb-5">
-              Hi, I’m <span class="text-cyan-400">Jonvie G. Cantero</span>
-            </h3>
-            <p class="text-base leading-8 text-slate-200 opacity-90 mb-4">
-              I am a Bachelor of Science in Information Technology (BSIT) student with a passion for transforming complex data and modern technology into practical, real-world solutions. My academic journey has built a strong foundation across core IT disciplines, with a particular focus on web development, data analysis, cybersecurity, and system automation.
-            </p>
-            <p class="text-base leading-8 text-slate-200 opacity-90 mb-4">
-              My technical strengths lie in analyzing datasets, designing intuitive web interfaces, and structuring efficient logical workflows. I enjoy working with tools like Microsoft Excel for data visualization, performance tracking, and structured reporting. Furthermore, my understanding of cybersecurity fundamentals, data privacy standards (such as GDPR), and threat mitigation allows me to approach every digital solution with security and privacy top of mind.
-            </p>
-            <p class="text-base leading-8 text-slate-200 opacity-90">
-              Driven by a commitment to continuous learning, efficiency, and integrity, I value solutions that are not only effective but also user-centric and secure. I am particularly interested in IT roles focused on <span class="font-semibold text-cyan-400">Data Analytics, Web & Application Development, and System Analysis</span>. My career goal is to leverage my technical skills and analytical mindset to contribute to impactful tech projects, solve challenging business problems, and grow into a versatile IT professional.
-            </p>
+      <section class="section about" id="about">
+        <div class="container">
+          <div class="section-head">
+            <span class="eyebrow">About me</span>
+            <h2>Technical thinker with real-world problem-solving focus</h2>
           </div>
-
-          <div class="space-y-4">
-            <div class="rounded-2xl border border-cyan-500/30 bg-cyan-500/5 p-5">
-              <p class="text-xs font-mono uppercase tracking-wider text-cyan-400 mb-2">Core Interests</p>
-              <ul class="space-y-2 text-sm text-slate-200">
-                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-cyan-400"></i> Data Analytics</li>
-                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-cyan-400"></i> Web & App Development</li>
-                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-cyan-400"></i> System Analysis</li>
-                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-cyan-400"></i> Cybersecurity</li>
-              </ul>
-            </div>
-
-            <div class="rounded-2xl border border-slate-700 bg-slate-900/70 p-5">
-              <p class="text-xs font-mono uppercase tracking-wider text-emerald-400 mb-2">Career Focus</p>
-              <p class="text-sm leading-7 text-slate-200">
-                Building meaningful technology solutions that improve operations, support decision-making, and create value through secure, efficient, and user-friendly systems.
+          <div class="about-grid">
+            <div>
+              <h3>I turn complex data and technology into practical, user-centered solutions.</h3>
+              <p>
+                I am a Bachelor of Science in Information Technology student with a strong interest in web development,
+                data analysis, cybersecurity, and system automation. My academic path has built a foundation across core IT areas and emphasized how to build solutions that are useful, efficient, secure, and easy to maintain.
+              </p>
+              <p>
+                My strengths lie in analysis, logical problem-solving, structured workflow design, and building interfaces that are both functional and intuitive. I enjoy working with data in Excel, implementing database-driven systems, and creating software that supports real operational needs.
+              </p>
+              <p>
+                I value continuous learning, integrity, and practical execution. I’m especially interested in roles involving data analytics, web/application development, and system analysis where I can contribute to meaningful projects and continue growing as a professional.
               </p>
             </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Technical Competencies Matrix Section -->
-  <section id="competencies" class="py-20 section-bg-alt border-y border-slate-800/60 relative">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center max-w-3xl mx-auto mb-16">
-        <h2 class="text-xs font-mono font-semibold uppercase tracking-wider text-cyan-400 mb-2">Core Technical Framework</h2>
-        <h3 class="text-3xl sm:text-4xl font-extrabold tracking-tight">Technical Competencies Matrix</h3>
-        <p class="opacity-75 mt-4 text-sm sm:text-base">
-          Direct mapping of academic skills, software engineering methodologies, and IT industry standards mastered throughout the BSIT curriculum.
-        </p>
-      </div>
-
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <!-- Competency 1: Web & Software Dev -->
-        <div class="glass-card rounded-2xl p-6 hover:border-cyan-500/50 transition-all glow-effect">
-          <div class="w-12 h-12 rounded-xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center text-xl mb-5">
-            <i class="fa-solid fa-code"></i>
-          </div>
-          <h4 class="text-xl font-bold mb-2">Programming & Web Dev</h4>
-          <p class="text-xs opacity-60 mb-4">Objectives 3 & 5</p>
-          <p class="opacity-80 text-sm mb-4">
-            Full-stack application development using JavaScript (ES6+), React, Tailwind CSS, Python, and RESTful API architectures.
-          </p>
-          <div class="flex flex-wrap gap-2 pt-2 border-t border-slate-800/60 font-mono text-xs text-cyan-400">
-            <span class="px-2.5 py-1 rounded-lg bg-slate-900 border border-slate-800">JavaScript</span>
-            <span class="px-2.5 py-1 rounded-lg bg-slate-900 border border-slate-800">Python</span>
-            <span class="px-2.5 py-1 rounded-lg bg-slate-900 border border-slate-800">Node.js</span>
-            <span class="px-2.5 py-1 rounded-lg bg-slate-900 border border-slate-800">HTML5/Tailwind</span>
-          </div>
-        </div>
-
-        <!-- Competency 2: Database & SQL -->
-        <div class="glass-card rounded-2xl p-6 hover:border-indigo-500/50 transition-all glow-effect">
-          <div class="w-12 h-12 rounded-xl bg-indigo-500/10 text-indigo-400 flex items-center justify-center text-xl mb-5">
-            <i class="fa-solid fa-database"></i>
-          </div>
-          <h4 class="text-xl font-bold mb-2">Database & SQL Mastery</h4>
-          <p class="text-xs opacity-60 mb-4">Objective 4</p>
-          <p class="opacity-80 text-sm mb-4">
-            Relational database modeling (ERD), complex query joins, indexing, normalized schema design, and MySQL/PostgreSQL administration.
-          </p>
-          <div class="flex flex-wrap gap-2 pt-2 border-t border-slate-800/60 font-mono text-xs text-indigo-400">
-            <span class="px-2.5 py-1 rounded-lg bg-slate-900 border border-slate-800">MySQL</span>
-            <span class="px-2.5 py-1 rounded-lg bg-slate-900 border border-slate-800">PostgreSQL</span>
-            <span class="px-2.5 py-1 rounded-lg bg-slate-900 border border-slate-800">ERD Modeling</span>
-            <span class="px-2.5 py-1 rounded-lg bg-slate-900 border border-slate-800">Indexing</span>
-          </div>
-        </div>
-
-        <!-- Competency 3: Data Analytics -->
-        <div class="glass-card rounded-2xl p-6 hover:border-emerald-500/50 transition-all glow-effect">
-          <div class="w-12 h-12 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-xl mb-5">
-            <i class="fa-solid fa-chart-line"></i>
-          </div>
-          <h4 class="text-xl font-bold mb-2">Data Analytics & Metrics</h4>
-          <p class="text-xs opacity-60 mb-4">Objective 8</p>
-          <p class="opacity-80 text-sm mb-4">
-            Statistical calculations (<code class="text-emerald-400">CORREL</code>, <code class="text-emerald-400">AVERAGEIFS</code>), dataset cleaning, PivotTables, trendlines, and performance reporting.
-          </p>
-          <div class="flex flex-wrap gap-2 pt-2 border-t border-slate-800/60 font-mono text-xs text-emerald-400">
-            <span class="px-2.5 py-1 rounded-lg bg-slate-900 border border-slate-800">MS Excel</span>
-            <span class="px-2.5 py-1 rounded-lg bg-slate-900 border border-slate-800">PivotTables</span>
-            <span class="px-2.5 py-1 rounded-lg bg-slate-900 border border-slate-800">CORREL</span>
-            <span class="px-2.5 py-1 rounded-lg bg-slate-900 border border-slate-800">Data Cleaning</span>
-          </div>
-        </div>
-
-        <!-- Competency 4: Cybersecurity -->
-        <div class="glass-card rounded-2xl p-6 hover:border-red-500/50 transition-all glow-effect">
-          <div class="w-12 h-12 rounded-xl bg-red-500/10 text-red-400 flex items-center justify-center text-xl mb-5">
-            <i class="fa-solid fa-shield-halved"></i>
-          </div>
-          <h4 class="text-xl font-bold mb-2">Cybersecurity Awareness</h4>
-          <p class="text-xs opacity-60 mb-4">Objective 7</p>
-          <p class="opacity-80 text-sm mb-4">
-            Understanding CIA Triad principles, threat vector evaluation, ransomware mitigations, phishing prevention, and data privacy regulations.
-          </p>
-          <div class="flex flex-wrap gap-2 pt-2 border-t border-slate-800/60 font-mono text-xs text-red-400">
-            <span class="px-2.5 py-1 rounded-lg bg-slate-900 border border-slate-800">CIA Triad</span>
-            <span class="px-2.5 py-1 rounded-lg bg-slate-900 border border-slate-800">Threat Mitigation</span>
-            <span class="px-2.5 py-1 rounded-lg bg-slate-900 border border-slate-800">Phishing Analysis</span>
-          </div>
-        </div>
-
-        <!-- Competency 5: Networking & Diagnostics -->
-        <div class="glass-card rounded-2xl p-6 hover:border-amber-500/50 transition-all glow-effect">
-          <div class="w-12 h-12 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center text-xl mb-5">
-            <i class="fa-solid fa-network-wired"></i>
-          </div>
-          <h4 class="text-xl font-bold mb-2">Networking & Diagnostics</h4>
-          <p class="text-xs opacity-60 mb-4">Objective 6</p>
-          <p class="opacity-80 text-sm mb-4">
-            Cisco Packet Tracer simulation, IP subnetting, TCP/IP stack configuration, DNS/DHCP setup, and system troubleshooting logs.
-          </p>
-          <div class="flex flex-wrap gap-2 pt-2 border-t border-slate-800/60 font-mono text-xs text-amber-400">
-            <span class="px-2.5 py-1 rounded-lg bg-slate-900 border border-slate-800">IPv4 / IPv6</span>
-            <span class="px-2.5 py-1 rounded-lg bg-slate-900 border border-slate-800">Packet Tracer</span>
-            <span class="px-2.5 py-1 rounded-lg bg-slate-900 border border-slate-800">Subnetting</span>
-          </div>
-        </div>
-
-        <!-- Competency 6: Cloud & DevOps -->
-        <div class="glass-card rounded-2xl p-6 hover:border-sky-500/50 transition-all glow-effect">
-          <div class="w-12 h-12 rounded-xl bg-sky-500/10 text-sky-400 flex items-center justify-center text-xl mb-5">
-            <i class="fa-solid fa-cloud"></i>
-          </div>
-          <h4 class="text-xl font-bold mb-2">Cloud & Git Deployment</h4>
-          <p class="text-xs opacity-60 mb-4">Objectives 9, 11 & 12</p>
-          <p class="opacity-80 text-sm mb-4">
-            Version control management using Git & GitHub, automated deployments on Vercel/Netlify, documentation, and continuous integration.
-          </p>
-          <div class="flex flex-wrap gap-2 pt-2 border-t border-slate-800/60 font-mono text-xs text-sky-400">
-            <span class="px-2.5 py-1 rounded-lg bg-slate-900 border border-slate-800">Git CLI</span>
-            <span class="px-2.5 py-1 rounded-lg bg-slate-900 border border-slate-800">GitHub Actions</span>
-            <span class="px-2.5 py-1 rounded-lg bg-slate-900 border border-slate-800">Vercel</span>
-            <span class="px-2.5 py-1 rounded-lg bg-slate-900 border border-slate-800">Markdown README</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Skills Inventory Section -->
-  <section id="inventory" class="py-20 section-bg-alt border-y border-slate-800/60">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center max-w-3xl mx-auto mb-12">
-        <h2 class="text-xs font-mono font-semibold uppercase tracking-wider text-cyan-400 mb-2">Skills Inventory</h2>
-        <h3 class="text-3xl sm:text-4xl font-extrabold tracking-tight">Technical Capability Matrix</h3>
-        <p class="opacity-75 mt-4 text-sm sm:text-base">
-          A structured overview of the core IT skill areas mastered, the proficiency level achieved, and the project evidence supporting each capability.
-        </p>
-      </div>
-
-      <div class="glass-card rounded-2xl overflow-hidden border border-slate-800">
-        <div class="overflow-x-auto">
-          <table class="min-w-full border-collapse text-left text-xs sm:text-sm">
-            <thead class="bg-slate-900/80 text-slate-200">
-              <tr>
-                <th class="border border-slate-700 px-3 py-3 font-mono uppercase tracking-wider text-cyan-400">Area</th>
-                <th class="border border-slate-700 px-3 py-3 font-mono uppercase tracking-wider text-cyan-400">Skills</th>
-                <th class="border border-slate-700 px-3 py-3 font-mono uppercase tracking-wider text-cyan-400">Level</th>
-                <th class="border border-slate-700 px-3 py-3 font-mono uppercase tracking-wider text-cyan-400">Evidence / Project</th>
-              </tr>
-            </thead>
-            <tbody class="text-slate-200">
-              <tr>
-                <td class="border border-slate-700 px-3 py-4 align-top font-semibold">Networking</td>
-                <td class="border border-slate-700 px-3 py-4 align-top">TCP/IP, subnetting, IP addressing, DNS, DHCP, troubleshooting</td>
-                <td class="border border-slate-700 px-3 py-4 align-top text-emerald-400 font-semibold">Advanced</td>
-                <td class="border border-slate-700 px-3 py-4 align-top">Cisco Packet Tracer simulations and network lab troubleshooting documentation</td>
-              </tr>
-              <tr>
-                <td class="border border-slate-700 px-3 py-4 align-top font-semibold">Database</td>
-                <td class="border border-slate-700 px-3 py-4 align-top">ERD design, SQL queries, joins, normalization, indexing</td>
-                <td class="border border-slate-700 px-3 py-4 align-top text-emerald-400 font-semibold">Advanced</td>
-                <td class="border border-slate-700 px-3 py-4 align-top">Transit fare payment system database and relational schema design</td>
-              </tr>
-              <tr>
-                <td class="border border-slate-700 px-3 py-4 align-top font-semibold">Web</td>
-                <td class="border border-slate-700 px-3 py-4 align-top">HTML, CSS, JavaScript, UI/UX, responsive design</td>
-                <td class="border border-slate-700 px-3 py-4 align-top text-cyan-400 font-semibold">Proficient</td>
-                <td class="border border-slate-700 px-3 py-4 align-top">Portfolio website and front-end project interfaces built with Tailwind CSS</td>
-              </tr>
-              <tr>
-                <td class="border border-slate-700 px-3 py-4 align-top font-semibold">Programming</td>
-                <td class="border border-slate-700 px-3 py-4 align-top">Python, JavaScript, logic building, debugging, algorithms</td>
-                <td class="border border-slate-700 px-3 py-4 align-top text-cyan-400 font-semibold">Proficient</td>
-                <td class="border border-slate-700 px-3 py-4 align-top">Automation scripts, app logic implementation, and system workflows</td>
-              </tr>
-              <tr>
-                <td class="border border-slate-700 px-3 py-4 align-top font-semibold">Data</td>
-                <td class="border border-slate-700 px-3 py-4 align-top">Excel analysis, PivotTables, trendlines, data cleaning, correlation</td>
-                <td class="border border-slate-700 px-3 py-4 align-top text-emerald-400 font-semibold">Advanced</td>
-                <td class="border border-slate-700 px-3 py-4 align-top">Social media performance analysis using dataset records and evidence-based insights</td>
-              </tr>
-              <tr>
-                <td class="border border-slate-700 px-3 py-4 align-top font-semibold">Cybersecurity</td>
-                <td class="border border-slate-700 px-3 py-4 align-top">CIA triad, ransomware mitigation, phishing awareness, data privacy</td>
-                <td class="border border-slate-700 px-3 py-4 align-top text-indigo-400 font-semibold">Proficient</td>
-                <td class="border border-slate-700 px-3 py-4 align-top">Threat assessment case study and security risk framework for digital systems</td>
-              </tr>
-              <tr>
-                <td class="border border-slate-700 px-3 py-4 align-top font-semibold">Cloud & DevOps</td>
-                <td class="border border-slate-700 px-3 py-4 align-top">Git, GitHub, version control, deployment, documentation</td>
-                <td class="border border-slate-700 px-3 py-4 align-top text-cyan-400 font-semibold">Proficient</td>
-                <td class="border border-slate-700 px-3 py-4 align-top">Portfolio deployment workflow and project repository management</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Featured Projects & Evidence Section -->
-  <section id="projects" class="py-20 relative">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
-        <div>
-          <h2 class="text-xs font-mono font-semibold uppercase tracking-wider text-cyan-400 mb-2">Capstone Artifacts</h2>
-          <h3 class="text-3xl sm:text-4xl font-extrabold tracking-tight">Featured Case Studies & Projects</h3>
-        </div>
-        <p class="opacity-75 text-sm max-w-md mt-4 md:mt-0">
-          Interactive showcase of actual systems built, database schemas created, and analytical methodologies executed.
-        </p>
-      </div>
-
-      <div class="grid md:grid-cols-3 gap-8">
-
-        <!-- Project 1 Card -->
-        <div class="glass-card rounded-2xl overflow-hidden flex flex-col justify-between border border-slate-800 hover:border-cyan-500/50 transition-all glow-effect group">
-          <div class="p-6">
-            <div class="flex items-center justify-between mb-4">
-              <span class="px-3 py-1 rounded-full bg-cyan-950/80 border border-cyan-800 text-cyan-400 text-xs font-mono font-semibold">Web & Mobile Dev</span>
-              <i class="fa-solid fa-mobile-screen-button opacity-60 group-hover:text-cyan-400 transition-colors"></i>
-            </div>
-            <h4 class="text-xl font-bold mb-3 group-hover:text-cyan-400 transition-colors">
-              Automated Jeepney Fare Payment System
-            </h4>
-            <p class="opacity-75 text-sm leading-relaxed mb-4">
-              NFC and QR-code enabled transit payment application designed to streamline urban commuter fare collection with real-time balance sync.
-            </p>
-            <div class="space-y-2 text-xs font-mono mb-4">
-              <div class="flex items-center gap-2"><i class="fa-solid fa-check text-cyan-400"></i> Full-stack REST API Integration</div>
-              <div class="flex items-center gap-2"><i class="fa-solid fa-check text-cyan-400"></i> Relational MySQL Database</div>
-            </div>
-          </div>
-
-          <div class="p-6 pt-0 border-t border-slate-800/60 mt-auto flex items-center justify-between">
-            <button onclick="openModal('project1')" class="text-xs font-bold text-cyan-400 hover:text-cyan-300 flex items-center gap-1.5 cursor-pointer">
-              <span>View Case Study</span> <i class="fa-solid fa-arrow-right"></i>
-            </button>
-            <a href="https://github.com" target="_blank" class="opacity-60 hover:opacity-100 text-base"><i class="fa-brands fa-github"></i></a>
-          </div>
-        </div>
-
-        <!-- Project 2 Card -->
-        <div class="glass-card rounded-2xl overflow-hidden flex flex-col justify-between border border-slate-800 hover:border-emerald-500/50 transition-all glow-effect group">
-          <div class="p-6">
-            <div class="flex items-center justify-between mb-4">
-              <span class="px-3 py-1 rounded-full bg-emerald-950/80 border border-emerald-800 text-emerald-400 text-xs font-mono font-semibold">Data Analytics</span>
-              <i class="fa-solid fa-chart-pie opacity-60 group-hover:text-emerald-400 transition-colors"></i>
-            </div>
-            <h4 class="text-xl font-bold mb-3 group-hover:text-emerald-400 transition-colors">
-              Social Media Performance Analysis
-            </h4>
-            <p class="opacity-75 text-sm leading-relaxed mb-4">
-              Complete analytics case study on a 50-record dataset examining platform performance, engagement rates, and video duration correlation.
-            </p>
-            <div class="space-y-2 text-xs font-mono mb-4">
-              <div class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> <code class="text-emerald-400">CORREL</code> & PivotTable Analysis</div>
-              <div class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> Actionable Evidence-Based Insights</div>
-            </div>
-          </div>
-
-          <div class="p-6 pt-0 border-t border-slate-800/60 mt-auto flex items-center justify-between">
-            <button onclick="openModal('project2')" class="text-xs font-bold text-emerald-400 hover:text-emerald-300 flex items-center gap-1.5 cursor-pointer">
-              <span>View Case Study</span> <i class="fa-solid fa-arrow-right"></i>
-            </button>
-            <a href="https://github.com" target="_blank" class="opacity-60 hover:opacity-100 text-base"><i class="fa-brands fa-github"></i></a>
-          </div>
-        </div>
-
-        <!-- Project 3 Card -->
-        <div class="glass-card rounded-2xl overflow-hidden flex flex-col justify-between border border-slate-800 hover:border-indigo-500/50 transition-all glow-effect group">
-          <div class="p-6">
-            <div class="flex items-center justify-between mb-4">
-              <span class="px-3 py-1 rounded-full bg-indigo-950/80 border border-indigo-800 text-indigo-400 text-xs font-mono font-semibold">Cybersecurity</span>
-              <i class="fa-solid fa-shield-virus opacity-60 group-hover:text-indigo-400 transition-colors"></i>
-            </div>
-            <h4 class="text-xl font-bold mb-3 group-hover:text-indigo-400 transition-colors">
-              CIA Triad & Threat Risk Framework
-            </h4>
-            <p class="opacity-75 text-sm leading-relaxed mb-4">
-              Enterprise security case study evaluating ransomware attack vectors, phishing resilience, and compliance guidelines (GDPR/Data Privacy).
-            </p>
-            <div class="space-y-2 text-xs font-mono mb-4">
-              <div class="flex items-center gap-2"><i class="fa-solid fa-check text-indigo-400"></i> Threat Risk Mitigation Plan</div>
-              <div class="flex items-center gap-2"><i class="fa-solid fa-check text-indigo-400"></i> Security Architecture Diagrams</div>
-            </div>
-          </div>
-
-          <div class="p-6 pt-0 border-t border-slate-800/60 mt-auto flex items-center justify-between">
-            <button onclick="openModal('project3')" class="text-xs font-bold text-indigo-400 hover:text-indigo-300 flex items-center gap-1.5 cursor-pointer">
-              <span>View Case Study</span> <i class="fa-solid fa-arrow-right"></i>
-            </button>
-            <a href="https://github.com" target="_blank" class="opacity-60 hover:opacity-100 text-base"><i class="fa-brands fa-github"></i></a>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- Responsible Use of AI Tools Section -->
-  <section id="ai-ethics" class="py-16 section-bg-alt border-y border-slate-800/60">
-    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="glass-card rounded-2xl p-8 border border-cyan-500/30 relative overflow-hidden">
-        <div class="absolute -top-12 -right-12 w-40 h-40 bg-cyan-500/10 rounded-full blur-2xl"></div>
-
-        <div class="flex flex-col md:flex-row items-start gap-6">
-          <div class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-cyan-500 to-indigo-600 flex items-center justify-center text-white text-2xl flex-shrink-0 shadow-lg shadow-cyan-500/20">
-            <i class="fa-solid fa-robot"></i>
-          </div>
-
-          <div class="space-y-3">
-            <div class="inline-flex items-center gap-2 text-xs font-mono text-cyan-400 uppercase tracking-widest font-semibold">
-              <i class="fa-solid fa-scale-balanced"></i> Capstone Objective 10
-            </div>
-            <h3 class="text-2xl font-bold">Responsible Use of Artificial Intelligence (AI) Tools</h3>
-            <p class="opacity-80 text-sm leading-relaxed">
-              As a modern IT professional, I embrace Generative AI (including Copilot, ChatGPT, and AI-assisted IDEs) strictly as productivity amplifiers for tasks such as <strong>code refactoring, SQL query optimization, unit test drafting, and documentation formatting</strong>.
-            </p>
-            <p class="opacity-75 text-sm leading-relaxed">
-              Every line of code or analysis generated with AI assistance is subject to rigorous <strong>manual code review, empirical testing, and validation against cybersecurity standard procedures</strong>. AI tools supplement technical judgment rather than replacing critical engineering problem-solving.
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Interactive CLI Terminal Section -->
-  <section id="terminal" class="py-20 relative">
-    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-10">
-        <h2 class="text-xs font-mono font-semibold uppercase tracking-wider text-cyan-400 mb-2">Developer Interactive Mode</h2>
-        <h3 class="text-3xl font-extrabold">Command Line Simulator</h3>
-        <p class="opacity-75 text-sm mt-2">Type <span class="text-cyan-400 font-mono font-bold">help</span> to see available commands or explore skills and project details directly.</p>
-      </div>
-
-      <!-- Terminal Body -->
-      <div class="w-full bg-slate-950 rounded-2xl border border-slate-800 shadow-2xl overflow-hidden font-mono text-xs sm:text-sm">
-        <!-- Terminal Header -->
-        <div class="bg-slate-900 px-4 py-3 border-b border-slate-800 flex items-center justify-between">
-          <div class="flex items-center gap-2">
-            <span class="w-3 h-3 rounded-full bg-red-500/80 inline-block"></span>
-            <span class="w-3 h-3 rounded-full bg-amber-500/80 inline-block"></span>
-            <span class="w-3 h-3 rounded-full bg-emerald-500/80 inline-block"></span>
-            <span class="ml-2 text-xs opacity-60 font-sans">bash — jonvie@bsit-capstone:~</span>
-          </div>
-          <span class="text-xs opacity-50">v1.2.0-release</span>
-        </div>
-
-        <!-- Terminal Output Area -->
-        <div id="terminalOutput" class="p-6 h-80 overflow-y-auto space-y-3 text-slate-300">
-          <p class="text-slate-500">BSIT Interactive Shell v2026. Type <span class="text-cyan-400 font-bold">help</span> for available commands.</p>
-          <p class="text-slate-400">&gt; jonvie.getProfileSummary()</p>
-          <p class="text-emerald-400">✓ Student Status: Graduating BSIT Candidate | All 15 Capstone Objectives Complete</p>
-        </div>
-
-        <!-- Terminal Input Bar -->
-        <div class="px-6 py-3 bg-slate-900/60 border-t border-slate-800/80 flex items-center gap-2">
-          <span class="text-cyan-400 font-bold">jonvie@portfolio:~$</span>
-          <input id="terminalInput" type="text" placeholder="Type 'help', 'skills', 'projects', 'contact' or 'clear'..." class="bg-transparent text-white focus:outline-none w-full font-mono text-xs sm:text-sm" onkeydown="handleTerminalCommand(event)" />
-          <span class="term-cursor"></span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Contact & Professional Links Section -->
-  <section id="contact" class="py-20 section-bg-alt border-t border-slate-800/60 relative">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid lg:grid-cols-12 gap-12">
-        <div class="lg:col-span-5 space-y-6">
-          <h2 class="text-xs font-mono font-semibold uppercase tracking-wider text-cyan-400">Objectives 13, 14 & 15</h2>
-          <h3 class="text-3xl font-extrabold tracking-tight">Professional Identity & Outreach</h3>
-          <p class="opacity-75 text-sm leading-relaxed">
-            Ready to contribute technical problem-solving capabilities, full-stack software development skills, and structured data analytical insights to your engineering team.
-          </p>
-
-          <div class="space-y-4 pt-4">
-            <a href="mailto:jonviecantero@gmail.com" class="flex items-center gap-4 p-4 rounded-xl glass-card hover:border-cyan-500/50 transition-all">
-              <div class="w-10 h-10 rounded-lg bg-cyan-500/10 text-cyan-400 flex items-center justify-center text-lg">
-                <i class="fa-solid fa-envelope"></i>
+            <div>
+              <div class="info-box">
+                <h4>Core interests</h4>
+                <ul class="check-list">
+                  <li>Data Analytics</li>
+                  <li>Web &amp; App Development</li>
+                  <li>System Analysis</li>
+                  <li>Cybersecurity</li>
+                </ul>
               </div>
-              <div>
-                <p class="text-xs opacity-60">Direct Email</p>
-                <p class="text-sm font-semibold">jonviecantero@gmail.com</p>
+              <div class="list-panel">
+                <h4>Career focus</h4>
+                <p>Building software and data systems that improve operations, guide decisions, and create value through clear design, secure thinking, and efficient execution.</p>
               </div>
-            </a>
-
-            <a href="https://linkedin.com" target="_blank" class="flex items-center gap-4 p-4 rounded-xl glass-card hover:border-indigo-500/50 transition-all">
-              <div class="w-10 h-10 rounded-lg bg-indigo-500/10 text-indigo-400 flex items-center justify-center text-lg">
-                <i class="fa-brands fa-linkedin"></i>
-              </div>
-              <div>
-                <p class="text-xs opacity-60">Professional LinkedIn</p>
-                <p class="text-sm font-semibold">linkedin.com/in/jonvie-g-cantero</p>
-              </div>
-            </a>
-
-            <a href="https://github.com" target="_blank" class="flex items-center gap-4 p-4 rounded-xl glass-card hover:border-emerald-500/50 transition-all">
-              <div class="w-10 h-10 rounded-lg bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-lg">
-                <i class="fa-brands fa-github"></i>
-              </div>
-              <div>
-                <p class="text-xs opacity-60">Source Code & Portfolio Repo</p>
-                <p class="text-sm font-semibold">github.com/jonvie-cantero</p>
-              </div>
-            </a>
+            </div>
           </div>
         </div>
+      </section>
 
-        <!-- Direct Message Contact Form -->
-        <div class="lg:col-span-7">
-          <div class="glass-card rounded-2xl p-8 border border-slate-800">
-            <h4 class="text-xl font-bold mb-6">Send a Direct Message</h4>
-            <form onsubmit="handleFormSubmit(event)" class="space-y-4">
-              <div class="grid sm:grid-cols-2 gap-4">
-                <div>
-                  <label class="block text-xs font-mono opacity-60 mb-2">YOUR NAME</label>
-                  <input type="text" required placeholder="e.g. Sarah Jenkins" class="w-full px-4 py-3 rounded-xl bg-slate-900/80 border border-slate-800 text-sm focus:outline-none focus:border-cyan-500 transition-colors" />
-                </div>
-                <div>
-                  <label class="block text-xs font-mono opacity-60 mb-2">EMAIL ADDRESS</label>
-                  <input type="email" required placeholder="sarah@company.com" class="w-full px-4 py-3 rounded-xl bg-slate-900/80 border border-slate-800 text-sm focus:outline-none focus:border-cyan-500 transition-colors" />
+      <section class="section" id="competencies">
+        <div class="container">
+          <div class="section-head">
+            <span class="eyebrow">Core Technical Framework</span>
+            <h2>Technical Competencies Matrix</h2>
+            <p>Direct mapping of academic skills, software engineering methodologies, and IT standards developed throughout the BSIT curriculum.</p>
+          </div>
+          <div class="grid-3">
+            <article class="card">
+              <div class="icon-box icon-cyan">&lt;/&gt;</div>
+              <h3>Programming &amp; Web Dev</h3>
+              <span class="meta">Objectives 3 &amp; 5</span>
+              <p>Building responsive interfaces and full-stack systems with JavaScript, Python, REST APIs, and modern UI patterns.</p>
+              <div class="tag-list">
+                <span class="tag">JavaScript</span><span class="tag">Python</span><span class="tag">Node.js</span><span class="tag">HTML5</span>
+              </div>
+            </article>
+            <article class="card">
+              <div class="icon-box icon-indigo">DB</div>
+              <h3>Database &amp; SQL Mastery</h3>
+              <span class="meta">Objective 4</span>
+              <p>Entity relationships, SQL joins, schema design, query optimization, and normalization for practical data systems.</p>
+              <div class="tag-list">
+                <span class="tag">MySQL</span><span class="tag">PostgreSQL</span><span class="tag">ERD</span><span class="tag">Indexing</span>
+              </div>
+            </article>
+            <article class="card">
+              <div class="icon-box icon-emerald">📈</div>
+              <h3>Data Analytics &amp; Metrics</h3>
+              <span class="meta">Objective 8</span>
+              <p>Looking at data trends, cleaning records, and drawing useful conclusions using Excel and analytical methods.</p>
+              <div class="tag-list">
+                <span class="tag">Excel</span><span class="tag">PivotTables</span><span class="tag">CORREL</span><span class="tag">Reporting</span>
+              </div>
+            </article>
+            <article class="card">
+              <div class="icon-box icon-red">🛡</div>
+              <h3>Cybersecurity Awareness</h3>
+              <span class="meta">Objective 7</span>
+              <p>Practicing threat awareness, secure design principles, phishing awareness, and risk evaluation for resilient applications.</p>
+              <div class="tag-list">
+                <span class="tag">CIA Triad</span><span class="tag">Threats</span><span class="tag">Risk</span><span class="tag">Privacy</span>
+              </div>
+            </article>
+            <article class="card">
+              <div class="icon-box icon-amber">🧭</div>
+              <h3>Networking &amp; Diagnostics</h3>
+              <span class="meta">Objective 6</span>
+              <p>Configuring and troubleshooting network environments, IP addressing, DNS, and transport-level communication.</p>
+              <div class="tag-list">
+                <span class="tag">TCP/IP</span><span class="tag">DNS</span><span class="tag">DHCP</span><span class="tag">Troubleshoot</span>
+              </div>
+            </article>
+            <article class="card">
+              <div class="icon-box icon-cyan">☁</div>
+              <h3>Cloud &amp; Collaboration</h3>
+              <span class="meta">Objectives 10-12</span>
+              <p>Deploying applications, managing version control, documenting work clearly, and collaborating effectively in teams.</p>
+              <div class="tag-list">
+                <span class="tag">Git</span><span class="tag">GitHub</span><span class="tag">Docs</span><span class="tag">Deployment</span>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="inventory">
+        <div class="container">
+          <div class="section-head">
+            <span class="eyebrow">Skills inventory</span>
+            <h2>Applied capability overview</h2>
+          </div>
+          <div class="card" style="padding:0; overflow:hidden;">
+            <table style="width:100%; border-collapse:collapse;">
+              <thead>
+                <tr style="background:rgba(34,211,238,0.06);">
+                  <th style="padding:16px 18px; text-align:left; font-size:12px; letter-spacing:0.12em; text-transform:uppercase; color:var(--cyan); border-bottom:1px solid var(--line);">Area</th>
+                  <th style="padding:16px 18px; text-align:left; font-size:12px; letter-spacing:0.12em; text-transform:uppercase; color:var(--cyan); border-bottom:1px solid var(--line);">Skills</th>
+                  <th style="padding:16px 18px; text-align:left; font-size:12px; letter-spacing:0.12em; text-transform:uppercase; color:var(--cyan); border-bottom:1px solid var(--line);">Level</th>
+                  <th style="padding:16px 18px; text-align:left; font-size:12px; letter-spacing:0.12em; text-transform:uppercase; color:var(--cyan); border-bottom:1px solid var(--line);">Evidence</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td style="padding:16px 18px; border-bottom:1px solid var(--line); font-weight:700;">Networking</td><td style="padding:16px 18px; border-bottom:1px solid var(--line);">TCP/IP, subnetting, DNS, DHCP, troubleshooting</td><td style="padding:16px 18px; border-bottom:1px solid var(--line); color:var(--emerald); font-weight:700;">Advanced</td><td style="padding:16px 18px; border-bottom:1px solid var(--line);">Packet Tracer labs and network documentation</td></tr>
+                <tr><td style="padding:16px 18px; border-bottom:1px solid var(--line); font-weight:700;">Database</td><td style="padding:16px 18px; border-bottom:1px solid var(--line);">ERD design, SQL joins, normalization, indexing</td><td style="padding:16px 18px; border-bottom:1px solid var(--line); color:var(--emerald); font-weight:700;">Advanced</td><td style="padding:16px 18px; border-bottom:1px solid var(--line);">Transit payment system schema and relational planning</td></tr>
+                <tr><td style="padding:16px 18px; border-bottom:1px solid var(--line); font-weight:700;">Web</td><td style="padding:16px 18px; border-bottom:1px solid var(--line);">HTML, CSS, JavaScript, responsive design</td><td style="padding:16px 18px; border-bottom:1px solid var(--line); color:var(--cyan); font-weight:700;">Proficient</td><td style="padding:16px 18px; border-bottom:1px solid var(--line);">Portfolio website and front-end interface work</td></tr>
+                <tr><td style="padding:16px 18px; border-bottom:1px solid var(--line); font-weight:700;">Programming</td><td style="padding:16px 18px; border-bottom:1px solid var(--line);">Python, JavaScript, logic building, debugging</td><td style="padding:16px 18px; border-bottom:1px solid var(--line); color:var(--cyan); font-weight:700;">Proficient</td><td style="padding:16px 18px; border-bottom:1px solid var(--line);">Scripts, app logic, and workflow implementations</td></tr>
+                <tr><td style="padding:16px 18px; border-bottom:1px solid var(--line); font-weight:700;">Data</td><td style="padding:16px 18px; border-bottom:1px solid var(--line);">Excel analysis, PivotTables, correlation, cleaning</td><td style="padding:16px 18px; border-bottom:1px solid var(--line); color:var(--emerald); font-weight:700;">Advanced</td><td style="padding:16px 18px; border-bottom:1px solid var(--line);">Social media and performance analysis datasets</td></tr>
+                <tr><td style="padding:16px 18px; border-bottom:1px solid var(--line); font-weight:700;">Cybersecurity</td><td style="padding:16px 18px; border-bottom:1px solid var(--line);">CIA triad, threats, phishing awareness, privacy</td><td style="padding:16px 18px; border-bottom:1px solid var(--line); color:var(--indigo); font-weight:700;">Proficient</td><td style="padding:16px 18px; border-bottom:1px solid var(--line);">Threat assessment and secure system review</td></tr>
+                <tr><td style="padding:16px 18px; font-weight:700;">Cloud &amp; DevOps</td><td style="padding:16px 18px;">Git, GitHub, deployment, documentation</td><td style="padding:16px 18px; color:var(--cyan); font-weight:700;">Proficient</td><td style="padding:16px 18px;">Portfolio deployment workflow and project repo management</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="projects">
+        <div class="container">
+          <div class="section-head">
+            <span class="eyebrow">Capstone artifacts</span>
+            <h2>Featured case studies &amp; projects</h2>
+            <p>Interactive showcase of systems built, databases designed, and analytical work completed.</p>
+          </div>
+          <div class="project-grid">
+            <article class="project-card">
+              <div class="content">
+                <div class="badge cyan">Web &amp; Mobile</div>
+                <h3>Automated Jeepney Fare Payment System</h3>
+                <p>Transit payment application designed to streamline fare collection with digital balance management and simple commuter UX.</p>
+                <ul class="project-list">
+                  <li>Full-stack API integration</li>
+                  <li>MySQL database design</li>
+                  <li>Workflow automation</li>
+                </ul>
+                <div class="project-footer">
+                  <a href="#" class="small-btn">View Case Study</a>
+                  <span class="mono" style="font-size:12px; color:var(--muted);">GitHub</span>
                 </div>
               </div>
-
-              <div>
-                <label class="block text-xs font-mono opacity-60 mb-2">SUBJECT</label>
-                <input type="text" required placeholder="BSIT Hiring / Project Inquiry" class="w-full px-4 py-3 rounded-xl bg-slate-900/80 border border-slate-800 text-sm focus:outline-none focus:border-cyan-500 transition-colors" />
+            </article>
+            <article class="project-card">
+              <div class="content">
+                <div class="badge emerald">Data Analytics</div>
+                <h3>Social Media Performance Analysis</h3>
+                <p>Dataset-driven analysis of engagement metrics, trends, and platform performance to uncover areas for better strategy.</p>
+                <ul class="project-list">
+                  <li>Excel and trend analysis</li>
+                  <li>Dataset cleaning and validation</li>
+                  <li>Decision-ready reporting</li>
+                </ul>
+                <div class="project-footer">
+                  <a href="#" class="small-btn">View Case Study</a>
+                  <span class="mono" style="font-size:12px; color:var(--muted);">Insights</span>
+                </div>
               </div>
-
-              <div>
-                <label class="block text-xs font-mono opacity-60 mb-2">MESSAGE</label>
-                <textarea rows="4" required placeholder="Hello Jonvie, I reviewed your capstone portfolio and would like to connect..." class="w-full px-4 py-3 rounded-xl bg-slate-900/80 border border-slate-800 text-sm focus:outline-none focus:border-cyan-500 transition-colors"></textarea>
+            </article>
+            <article class="project-card">
+              <div class="content">
+                <div class="badge indigo">Security</div>
+                <h3>Cybersecurity Risk Assessment</h3>
+                <p>Structured case study that evaluates real-world vulnerabilities, risk impact, mitigation strategies, and secure development practices.</p>
+                <ul class="project-list">
+                  <li>Threat and risk analysis</li>
+                  <li>Secure coding guidance</li>
+                  <li>Defense-in-depth mindset</li>
+                </ul>
+                <div class="project-footer">
+                  <a href="#" class="small-btn">View Case Study</a>
+                  <span class="mono" style="font-size:12px; color:var(--muted);">Security</span>
+                </div>
               </div>
-
-              <button type="submit" class="w-full py-3.5 text-sm font-bold text-slate-900 bg-cyan-400 hover:bg-cyan-300 rounded-xl shadow-lg shadow-cyan-400/20 transition-all flex items-center justify-center gap-2 cursor-pointer">
-                <i class="fa-solid fa-paper-plane"></i> Send Message
-              </button>
-            </form>
+            </article>
           </div>
         </div>
+      </section>
+
+      <section class="section" id="contact">
+        <div class="container">
+          <div class="section-head">
+            <span class="eyebrow">Professional identity</span>
+            <h2>Let’s connect</h2>
+            <p>Open to opportunities in software development, data analytics, cybersecurity, and systems-focused roles.</p>
+          </div>
+          <div class="contact-wrap">
+            <div class="contact-links">
+              <a class="contact-item" href="mailto:jonviecantero@gmail.com">
+                <div class="contact-icon ci-mail">✉</div>
+                <div>
+                  <div class="contact-meta">Direct email</div>
+                  <div class="contact-value">jonviecantero@gmail.com</div>
+                </div>
+              </a>
+              <a class="contact-item" href="https://linkedin.com" target="_blank" rel="noreferrer">
+                <div class="contact-icon ci-linkedin">in</div>
+                <div>
+                  <div class="contact-meta">LinkedIn</div>
+                  <div class="contact-value">linkedin.com/in/jonvie-g-cantero</div>
+                </div>
+              </a>
+              <a class="contact-item" href="https://github.com" target="_blank" rel="noreferrer">
+                <div class="contact-icon ci-github">⌘</div>
+                <div>
+                  <div class="contact-meta">GitHub</div>
+                  <div class="contact-value">github.com/jonvie-cantero</div>
+                </div>
+              </a>
+            </div>
+            <div class="form-card">
+              <h3 style="margin-bottom:20px;">Send a direct message</h3>
+              <form>
+                <div class="form-grid">
+                  <div class="field"><label for="name">Your name</label><input id="name" name="name" type="text" placeholder="e.g. Sarah Jenkins" /></div>
+                  <div class="field"><label for="email">Email address</label><input id="email" name="email" type="email" placeholder="sarah@company.com" /></div>
+                  <div class="field full"><label for="subject">Subject</label><input id="subject" name="subject" type="text" placeholder="BSIT Hiring / Project Inquiry" /></div>
+                  <div class="field full"><label for="message">Message</label><textarea id="message" name="message" rows="5" placeholder="Hello Jonvie, I reviewed your portfolio and would like to connect..."></textarea></div>
+                </div>
+                <button class="submit-btn" type="submit">Send Message</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container footer-row">
+        <p>&copy; 2026 Jonvie G. Cantero — BSIT Capstone Portfolio.</p>
+        <div class="mono">Git: v2.40.1 • Status: Operational</div>
       </div>
-    </div>
-  </section>
+    </footer>
 
-  <!-- Footer -->
-  <footer class="py-8 bg-slate-950 border-t border-slate-900 text-center text-xs opacity-60">
-    <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
-      <p>&copy; 2026 Jonvie G. Cantero — BSIT Capstone Portfolio. Hosted on GitHub Pages / Vercel.</p>
-      <div class="flex items-center gap-4 font-mono">
-        <span>Git: v2.40.1</span>
-        <span>•</span>
-        <span>Status: Operational</span>
-      </div>
-    </div>
-  </footer>
-
-  <!-- Project Detail Modals -->
-  <div id="modalBackdrop" class="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-md hidden items-center justify-center p-4">
-    <div id="modalContent" class="glass-card max-w-2xl w-full rounded-2xl p-6 sm:p-8 border border-slate-700 relative max-h-[90vh] overflow-y-auto">
-      <button onclick="closeModal()" class="absolute top-6 right-6 opacity-60 hover:opacity-100 text-xl cursor-pointer">
-        <i class="fa-solid fa-xmark"></i>
-      </button>
-
-      <!-- Modal Body inserted dynamically via JS -->
-      <div id="modalBody"></div>
-    </div>
-  </div>
-
-  <!-- Notification Toast Container -->
-  <div id="toast" class="fixed bottom-6 right-6 z-50 hidden bg-slate-900 border border-cyan-500/50 text-cyan-400 px-5 py-3 rounded-xl shadow-2xl font-mono text-xs items-center gap-3">
-    <i class="fa-solid fa-circle-check text-base"></i>
-    <span id="toastMessage">Action completed successfully.</span>
-  </div>
-
-  <script>
-    // --- Dark/Light Theme Toggle ---
-    function toggleTheme() {
-      const html = document.documentElement;
-      const icon = document.getElementById('themeIcon');
-      if (html.classList.contains('dark')) {
-        html.classList.remove('dark');
-        icon.className = 'fa-solid fa-sun text-amber-500';
-        showToast('Switched to Light Theme');
-      } else {
-        html.classList.add('dark');
-        icon.className = 'fa-solid fa-moon text-slate-300';
-        showToast('Switched to Dark Theme');
-      }
-    }
-
-    // --- Toast Message Helper ---
-    function showToast(msg) {
-      const toast = document.getElementById('toast');
-      const toastMessage = document.getElementById('toastMessage');
-      toastMessage.innerText = msg;
-      toast.classList.remove('hidden');
-      toast.classList.add('flex');
-      setTimeout(() => {
-        toast.classList.add('hidden');
-        toast.classList.remove('flex');
-      }, 3000);
-    }
-
-    // --- Modal Handler ---
-    const projectDetails = {
-      project1: {
-        title: "Automated Jeepney Fare Payment System",
-        badge: "Web & Mobile App Development",
-        description: "A comprehensive transit payment solution designed to eliminate physical cash handling in Philippine public transport through NFC cards and dynamic QR code ticketing.",
-        objectives: ["Objective 3: Programming Skills", "Objective 4: Relational SQL Database", "Objective 5: Application Development"],
-        tech: ["JavaScript (Node.js)", "React Native", "MySQL Schema", "REST API", "NFC Web API"],
-        highlights: [
-          "Engineered a normalized database schema storing user balances, transaction logs, and route tariffs.",
-          "Implemented real-time fare deduction algorithms based on GPS distance triggers.",
-          "Integrated offline QR code ticket generation for low-connectivity routes."
-        ]
-      },
-      project2: {
-        title: "Social Media Performance Analysis Case Study",
-        badge: "Data Analytics & Metrics",
-        description: "An empirical statistical analysis conducted on a dataset of 50 social media posts across Facebook, Instagram, and TikTok to evaluate audience engagement patterns.",
-        objectives: ["Objective 8: Data Analysis Skills", "Objective 11: Project Documentation", "Objective 15: Technical Communication"],
-        tech: ["MS Excel", "PivotTables", "Pearson Correlation (CORREL)", "Scatter Plot Trendlines"],
-        highlights: [
-          "Calculated Pearson Correlation (r = 0.48) between Video Duration and Engagement Rate.",
-          "Generated custom PivotTables breaking down total reach and average engagement by content type.",
-          "Delivered 3 evidence-based strategic recommendations for social media marketing teams."
-        ]
-      },
-      project3: {
-        title: "CIA Triad & Ransomware Security Assessment",
-        badge: "Cybersecurity Awareness",
-        description: "A structured risk management case study evaluating vulnerability vectors, ransomware operational impacts, and compliance standards.",
-        objectives: ["Objective 6: Networking & Troubleshooting", "Objective 7: Cybersecurity Awareness"],
-        tech: ["CIA Triad Model", "Risk Matrix Analysis", "GDPR Compliance Rules", "Cisco Packet Tracer"],
-        highlights: [
-          "Modeled threat mitigations for ransomware vectors using isolated network VLANs.",
-          "Drafted password policy and multi-factor authentication (MFA) protocols.",
-          "Formulated compliance checklists adhering to international data privacy regulations."
-        ]
-      }
-    };
-
-    function openModal(projectId) {
-      const p = projectDetails[projectId];
-      if (!p) return;
-
-      const bodyHtml = `
-        <span class="px-3 py-1 rounded-full bg-cyan-950 border border-cyan-800 text-cyan-400 font-mono text-xs font-semibold">${p.badge}</span>
-        <h3 class="text-2xl font-bold mt-3 mb-2">${p.title}</h3>
-        <p class="opacity-80 text-sm leading-relaxed mb-6">${p.description}</p>
-        
-        <div class="mb-6">
-          <h4 class="text-xs font-mono font-semibold opacity-60 uppercase tracking-wider mb-2">Matched Capstone Objectives</h4>
-          <div class="flex flex-wrap gap-2">
-            ${p.objectives.map(o => `<span class="px-2.5 py-1 rounded-lg bg-slate-900 border border-slate-800 text-cyan-300 text-xs font-mono">${o}</span>`).join('')}
-          </div>
-        </div>
-
-        <div class="mb-6">
-          <h4 class="text-xs font-mono font-semibold opacity-60 uppercase tracking-wider mb-2">Technical Implementation Highlights</h4>
-          <ul class="space-y-2 text-sm opacity-90">
-            ${p.highlights.map(h => `<li class="flex items-start gap-2"><i class="fa-solid fa-check text-cyan-400 mt-1 text-xs"></i> <span>${h}</span></li>`).join('')}
-          </ul>
-        </div>
-
-        <div class="pt-4 border-t border-slate-800 flex items-center justify-between">
-          <div class="flex flex-wrap gap-1 font-mono text-xs opacity-70">
-            ${p.tech.map(t => `<span class="bg-slate-800/80 px-2 py-0.5 rounded">${t}</span>`).join('')}
-          </div>
-          <a href="https://github.com" target="_blank" class="px-4 py-2 bg-cyan-400 hover:bg-cyan-300 text-slate-900 text-xs font-bold rounded-lg transition-all flex items-center gap-2">
-            <i class="fa-brands fa-github"></i> Repository
-          </a>
-        </div>
-      `;
-
-      document.getElementById('modalBody').innerHTML = bodyHtml;
-      const backdrop = document.getElementById('modalBackdrop');
-      backdrop.classList.remove('hidden');
-      backdrop.classList.add('flex');
-    }
-
-    function closeModal() {
-      const backdrop = document.getElementById('modalBackdrop');
-      backdrop.classList.add('hidden');
-      backdrop.classList.remove('flex');
-    }
-
-    // --- Interactive Terminal Logic ---
-    function handleTerminalCommand(e) {
-      if (e.key === 'Enter') {
-        const inputEl = document.getElementById('terminalInput');
-        const cmd = inputEl.value.trim().toLowerCase();
-        const outputEl = document.getElementById('terminalOutput');
-
-        if (!cmd) return;
-
-        // Echo typed command
-        const cmdLine = document.createElement('p');
-        cmdLine.className = 'text-cyan-400 font-bold';
-        cmdLine.innerText = `jonvie@portfolio:~$ ${cmd}`;
-        outputEl.appendChild(cmdLine);
-
-        // Command Switch Execution
-        let response = '';
-        if (cmd === 'help') {
-          response = `<p class="opacity-90">Available commands:</p>
-            <p class="opacity-70 ml-4"><span class="text-cyan-400 font-bold">whoami</span> - Display BSIT student profile summary</p>
-            <p class="opacity-70 ml-4"><span class="text-cyan-400 font-bold">skills</span> - Display technical matrix & stack</p>
-            <p class="opacity-70 ml-4"><span class="text-cyan-400 font-bold">projects</span> - List completed capstone projects</p>
-            <p class="opacity-70 ml-4"><span class="text-cyan-400 font-bold">ethics</span> - View Responsible AI Usage policy</p>
-            <p class="opacity-70 ml-4"><span class="text-cyan-400 font-bold">github</span> - Get GitHub repository link</p>
-            <p class="opacity-70 ml-4"><span class="text-cyan-400 font-bold">contact</span> - Show outreach and email links</p>
-            <p class="opacity-70 ml-4"><span class="text-cyan-400 font-bold">clear</span> - Clear terminal screen</p>`;
-        } else if (cmd === 'whoami') {
-          response = `<p class="text-emerald-400">✓ Jonvie G. Cantero — Graduating BSIT Student (Class of 2026)</p>
-            <p class="opacity-80">Specializing in Full-Stack Software Engineering, Relational SQL Databases, and Data Analytics.</p>`;
-        } else if (cmd === 'skills') {
-          response = `<p class="text-emerald-400">✓ JavaScript / Python / React / Node.js / Tailwind CSS</p>
-            <p class="text-indigo-400">✓ Relational DBs: MySQL / PostgreSQL / ERD / SQL Joins</p>
-            <p class="text-amber-400">✓ Analytics: Excel / PivotTables / CORREL / Trendlines</p>
-            <p class="text-sky-400">✓ Cloud & DevOps: Git CLI / GitHub Actions / Vercel</p>`;
-        } else if (cmd === 'projects') {
-          response = `<p class="opacity-90">1. Automated Jeepney Fare Payment System (NFC/QR)</p>
-            <p class="opacity-90">2. Social Media Performance Analytics (50 Dataset Records)</p>
-            <p class="opacity-90">3. Cybersecurity Ransomware Risk Assessment (CIA Triad)</p>`;
-        } else if (cmd === 'ethics') {
-          response = `<p class="text-indigo-300">Generative AI tools are leveraged responsibly for code refactoring, SQL optimization, and unit test drafting under mandatory manual review and security testing protocols.</p>`;
-        } else if (cmd === 'github') {
-          response = `<p class="text-cyan-400">GitHub Repository: https://github.com/jonvie-cantero</p>`;
-        } else if (cmd === 'contact') {
-          response = `<p class="opacity-90">Email: Jonviecantero@gmail.com | LinkedIn: linkedin.com/in/jonvie-g-cantero</p>`;
-        } else if (cmd === 'clear') {
-          outputEl.innerHTML = '';
-          inputEl.value = '';
-          return;
+    <script>
+      const root = document.documentElement;
+      const themeToggle = document.getElementById('themeToggle');
+      const themeIcon = document.getElementById('themeIcon');
+      function applyTheme(mode) {
+        if (mode === 'light') {
+          root.classList.add('light');
+          themeIcon.textContent = '☀';
         } else {
-          response = `<p class="text-red-400">Command not recognized: '${cmd}'. Type <span class="text-cyan-400 font-bold">help</span> for assistance.</p>`;
+          root.classList.remove('light');
+          themeIcon.textContent = '☾';
         }
-
-        const resDiv = document.createElement('div');
-        resDiv.innerHTML = response;
-        outputEl.appendChild(resDiv);
-
-        inputEl.value = '';
-        outputEl.scrollTop = outputEl.scrollHeight;
       }
-    }
-
-    // --- Direct Resume Download Action ---
-    function downloadResumeModal() {
-      showToast("Downloading Jonvie_Cantero_BSIT_Resume.pdf...");
-    }
-
-    // --- Direct Form Submit Handler ---
-    function handleFormSubmit(e) {
-      e.preventDefault();
-      showToast("Thank you! Message sent successfully.");
-      e.target.reset();
-    }
-  </script>
-</body>
+      const savedTheme = localStorage.getItem('themePreference');
+      if (savedTheme) applyTheme(savedTheme);
+      themeToggle.addEventListener('click', () => {
+        const nextMode = root.classList.contains('light') ? 'dark' : 'light';
+        applyTheme(nextMode);
+        localStorage.setItem('themePreference', nextMode);
+      });
+      document.querySelector('form').addEventListener('submit', function (event) {
+        event.preventDefault();
+        const button = this.querySelector('button[type="submit"]');
+        const originalText = button.textContent;
+        button.textContent = 'Message Sent';
+        button.disabled = true;
+        setTimeout(() => {
+          button.textContent = originalText;
+          button.disabled = false;
+          this.reset();
+        }, 1800);
+      });
+    </script>
+  </body>
 </html>
